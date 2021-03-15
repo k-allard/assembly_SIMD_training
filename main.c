@@ -4,59 +4,7 @@
 #include <unistd.h>
 #include <x86intrin.h>
 
-#define L 16	//строки
-#define Q 15	//столбцы
-#define G 2		//кол-во блоков в столбце
-
-//  L 16 
-//  Q 15 
-//  G 2
-void	matrixTransformG2(int matrix[], int matrixNew[])
-{
-	int blockLength = L / G; 					
-	int index;
-
-	for (int q = 0; q < Q; q++) {					
-		for (int i = 0; i < blockLength; i++) { 	
-			for (int g = 0; g < G; g++) {
-				matrixNew[q * L + G * i + g] = matrix [q * L + i + g * blockLength];
-			}
-		}
-    }
-}
-
-//  L 24 
-//  Q 25 
-//  G 3
-void	matrixTransformG3(int matrix[], int matrixNew[])
-{
-	int index;
-	int blockLength = L / G; 						
-
-	for (int q = 0; q < Q; q++) {					
-		for (int i = 0; i < blockLength; i++) { 	
-			for (int g = 0; g < G; g++) {
-				matrixNew[q * L + G * i + g] = matrix [q * L + i + g * blockLength];
-			}
-		}
-    }
-}
-
-//  L 40 
-//  Q 40 
-//  G 5
-void	matrixTransformG5(int matrix[], int matrixNew[])
-{
-	int index;
-	int blockLength = L / G; 			
-	for (int q = 0; q < Q; q++) {					
-		for (int i = 0; i < blockLength; i++) { 	
-			for (int g = 0; g < G; g++) {
-				matrixNew[q * L + G * i + g] = matrix [q * L + i + g * blockLength];
-			}
-		}
-    }
-}
+#include "header.h"
 
 int main()
 {
