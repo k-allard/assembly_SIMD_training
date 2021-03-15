@@ -58,6 +58,7 @@ int main()
 	for (int i = 0; i < L * Q; i++) {
 		printf("%5d", matrixNew[i]);
 	}
+	printf("\n");
 
 	return 0;
 }
