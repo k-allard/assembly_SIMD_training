@@ -5,6 +5,12 @@
 #define Q 15	//столбцы
 #define G 2		//кол-во блоков в столбце
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <x86intrin.h>
+// #include <benchmark/benchmark.h>
 
 //  L 24 
 //  Q 25 

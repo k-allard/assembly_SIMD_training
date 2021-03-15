@@ -1,9 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
-#include <x86intrin.h>
-
 #include "header.h"
 
 int main()
