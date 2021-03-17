@@ -1,662 +1,599 @@
-	.section	__TEXT,__text,regular,pure_instructions
-	.build_version macos, 10, 15	sdk_version 10, 15, 4
+	.file	"transform.cpp"
 	.intel_syntax noprefix
-	.globl	_transform3             ## -- Begin function transform3
-	.p2align	4, 0x90
-_transform3:                            ## @transform3
-## %bb.0:
-	push	rbp
-	mov	rbp, rsp
-	push	r14
-	push	rbx
+	.text
+	.p2align 4
+	.globl	transform3
+	.type	transform3, @function
+transform3:
+	endbr64
 	test	rcx, rcx
-	je	LBB0_9
-## %bb.1:
-	mov	r8, rdx
+	je	.L13
+	mov	r8, rdi
+	mov	rdi, rdx
+	push	rbp
 	movabs	rdx, -6148914691236517205
-	mov	rax, r8
+	mov	rax, rdi
+	push	rbx
+	mov	rbx, rcx
+	lea	rbp, 0[0+rdi*4]
 	mul	rdx
-	cmp	r8, 3
-	jb	LBB0_9
-## %bb.2:
-	shr	rdx
-	lea	r9, [4*r8]
-	xor	r10d, r10d
-	mov	r11, rdi
-	xor	r14d, r14d
-	cmp	r14, r8
-	jae	LBB0_5
-	jmp	LBB0_7
-	.p2align	4, 0x90
-LBB0_8:                                 ##   in Loop: Header=BB0_5 Depth=1
-	inc	r10
-	add	rdi, r9
-	cmp	r10, rcx
-	je	LBB0_9
-## %bb.3:                               ##   in Loop: Header=BB0_5 Depth=1
-	mov	r11, rdi
-	xor	r14d, r14d
-	cmp	r14, r8
-	jb	LBB0_7
-	.p2align	4, 0x90
-LBB0_5:                                 ## =>This Inner Loop Header: Depth=1
-	inc	r14
-	add	r11, 4
-	cmp	r14, rdx
-	jae	LBB0_8
-## %bb.6:                               ##   in Loop: Header=BB0_5 Depth=1
-	cmp	r14, r8
-	jae	LBB0_5
-LBB0_7:
-	xor	ebx, ebx
-	.p2align	4, 0x90
-LBB0_4:                                 ## =>This Inner Loop Header: Depth=1
-	mov	eax, dword ptr [r11 + 4*rbx]
-	mov	dword ptr [rsi], eax
-	add	rsi, 4
-	add	rbx, rdx
-	lea	rax, [r14 + rbx]
-	cmp	rax, r8
-	jb	LBB0_4
-	jmp	LBB0_5
-LBB0_9:
-	pop	rbx
-	pop	r14
-	pop	rbp
-	ret
-                                        ## -- End function
-	.globl	_transformz2            ## -- Begin function transformz2
-	.p2align	4, 0x90
-_transformz2:                           ## @transformz2
-## %bb.0:
-	push	rbp
-	mov	rbp, rsp
-	test	rcx, rcx
-	je	LBB1_9
-## %bb.1:
-	test	rdx, rdx
-	je	LBB1_9
-## %bb.2:
-	cmp	rdx, 1
-	jne	LBB1_3
-## %bb.10:
-	cmp	rcx, 7
-	jbe	LBB1_11
-## %bb.19:
-	lea	rax, [rdi + 4*rcx]
-	cmp	rax, rsi
-	jbe	LBB1_21
-## %bb.20:
-	lea	rax, [rsi + 4*rcx]
-	cmp	rax, rdi
-	jbe	LBB1_21
-LBB1_11:
-	xor	r8d, r8d
-LBB1_12:
-	mov	r9, r8
-	not	r9
-	add	r9, rcx
-	mov	r10, rcx
-	and	r10, 7
-	je	LBB1_16
-## %bb.13:
-	neg	r10
-	xor	edx, edx
-	.p2align	4, 0x90
-LBB1_14:                                ## =>This Inner Loop Header: Depth=1
-	mov	eax, dword ptr [rdi]
-	add	rdi, 4
-	mov	dword ptr [rsi], eax
-	add	rsi, 4
-	dec	rdx
-	cmp	r10, rdx
-	jne	LBB1_14
-## %bb.15:
-	sub	r8, rdx
-LBB1_16:
-	cmp	r9, 7
-	jb	LBB1_9
-## %bb.17:
-	sub	rcx, r8
-	xor	eax, eax
-	.p2align	4, 0x90
-LBB1_18:                                ## =>This Inner Loop Header: Depth=1
-	mov	edx, dword ptr [rdi + 4*rax]
-	mov	dword ptr [rsi + 4*rax], edx
-	mov	edx, dword ptr [rdi + 4*rax + 4]
-	mov	dword ptr [rsi + 4*rax + 4], edx
-	mov	edx, dword ptr [rdi + 4*rax + 8]
-	mov	dword ptr [rsi + 4*rax + 8], edx
-	mov	edx, dword ptr [rdi + 4*rax + 12]
-	mov	dword ptr [rsi + 4*rax + 12], edx
-	mov	edx, dword ptr [rdi + 4*rax + 16]
-	mov	dword ptr [rsi + 4*rax + 16], edx
-	mov	edx, dword ptr [rdi + 4*rax + 20]
-	mov	dword ptr [rsi + 4*rax + 20], edx
-	mov	edx, dword ptr [rdi + 4*rax + 24]
-	mov	dword ptr [rsi + 4*rax + 24], edx
-	mov	edx, dword ptr [rdi + 4*rax + 28]
-	mov	dword ptr [rsi + 4*rax + 28], edx
-	add	rax, 8
-	cmp	rcx, rax
-	jne	LBB1_18
-	jmp	LBB1_9
-LBB1_3:
-	lea	r8, [4*rdx]
-	xor	r9d, r9d
-	.p2align	4, 0x90
-LBB1_4:                                 ## =>This Loop Header: Depth=1
-                                        ##     Child Loop BB1_5 Depth 2
-                                        ##     Child Loop BB1_7 Depth 2
-	xor	r10d, r10d
+	mov	rcx, rdx
+	shr	rcx
+	cmp	rdi, 2
+	jbe	.L1
 	xor	r11d, r11d
-	.p2align	4, 0x90
-LBB1_5:                                 ##   Parent Loop BB1_4 Depth=1
-                                        ## =>  This Inner Loop Header: Depth=2
-	mov	eax, dword ptr [rdi + 2*r11]
-	mov	dword ptr [rsi + 4*r11], eax
-	add	r11, 2
-	add	r10, 4
-	cmp	r11, rdx
-	jb	LBB1_5
-## %bb.6:                               ##   in Loop: Header=BB1_4 Depth=1
-	add	rdi, r10
-	mov	r11d, 1
-	xor	r10d, r10d
-	.p2align	4, 0x90
-LBB1_7:                                 ##   Parent Loop BB1_4 Depth=1
-                                        ## =>  This Inner Loop Header: Depth=2
-	mov	eax, dword ptr [rdi + 2*r11 - 2]
-	mov	dword ptr [rsi + 4*r11], eax
-	add	r11, 2
-	add	r10, 4
-	cmp	r11, rdx
-	jb	LBB1_7
-## %bb.8:                               ##   in Loop: Header=BB1_4 Depth=1
-	inc	r9
-	add	rsi, r8
-	add	rdi, r10
-	cmp	r9, rcx
-	jne	LBB1_4
-LBB1_9:
-	pop	rbp
-	ret
-LBB1_21:
-	mov	r8, rcx
-	and	r8, -8
-	lea	rax, [r8 - 8]
-	mov	rdx, rax
-	shr	rdx, 3
-	inc	rdx
-	mov	r9d, edx
-	and	r9d, 3
-	cmp	rax, 24
-	jae	LBB1_23
-## %bb.22:
-	xor	eax, eax
-	test	r9, r9
-	jne	LBB1_26
-	jmp	LBB1_28
-LBB1_23:
-	sub	rdx, r9
-	xor	eax, eax
-	.p2align	4, 0x90
-LBB1_24:                                ## =>This Inner Loop Header: Depth=1
-	movups	xmm0, xmmword ptr [rdi + 4*rax]
-	movups	xmm1, xmmword ptr [rdi + 4*rax + 16]
-	movups	xmmword ptr [rsi + 4*rax], xmm0
-	movups	xmmword ptr [rsi + 4*rax + 16], xmm1
-	movups	xmm0, xmmword ptr [rdi + 4*rax + 32]
-	movups	xmm1, xmmword ptr [rdi + 4*rax + 48]
-	movups	xmmword ptr [rsi + 4*rax + 32], xmm0
-	movups	xmmword ptr [rsi + 4*rax + 48], xmm1
-	movups	xmm0, xmmword ptr [rdi + 4*rax + 64]
-	movups	xmm1, xmmword ptr [rdi + 4*rax + 80]
-	movups	xmmword ptr [rsi + 4*rax + 64], xmm0
-	movups	xmmword ptr [rsi + 4*rax + 80], xmm1
-	movups	xmm0, xmmword ptr [rdi + 4*rax + 96]
-	movups	xmm1, xmmword ptr [rdi + 4*rax + 112]
-	movups	xmmword ptr [rsi + 4*rax + 96], xmm0
-	movups	xmmword ptr [rsi + 4*rax + 112], xmm1
-	add	rax, 32
-	add	rdx, -4
-	jne	LBB1_24
-## %bb.25:
-	test	r9, r9
-	je	LBB1_28
-LBB1_26:
-	lea	rax, [4*rax + 16]
-	neg	r9
-	.p2align	4, 0x90
-LBB1_27:                                ## =>This Inner Loop Header: Depth=1
-	movups	xmm0, xmmword ptr [rdi + rax - 16]
-	movups	xmm1, xmmword ptr [rdi + rax]
-	movups	xmmword ptr [rsi + rax - 16], xmm0
-	movups	xmmword ptr [rsi + rax], xmm1
-	add	rax, 32
-	inc	r9
-	jne	LBB1_27
-LBB1_28:
-	cmp	r8, rcx
-	je	LBB1_9
-## %bb.29:
-	lea	rdi, [rdi + 4*r8]
-	lea	rsi, [rsi + 4*r8]
-	jmp	LBB1_12
-                                        ## -- End function
-	.globl	_transformz3            ## -- Begin function transformz3
-	.p2align	4, 0x90
-_transformz3:                           ## @transformz3
-## %bb.0:
-	push	rbp
-	mov	rbp, rsp
-	test	rcx, rcx
-	je	LBB2_21
-## %bb.1:
-	test	rdx, rdx
-	je	LBB2_21
-## %bb.2:
-	cmp	rdx, 1
-	jne	LBB2_3
-## %bb.12:
-	cmp	rcx, 7
-	jbe	LBB2_13
-## %bb.22:
-	lea	rax, [rdi + 4*rcx]
-	cmp	rax, rsi
-	jbe	LBB2_24
-## %bb.23:
-	lea	rax, [rsi + 4*rcx]
-	cmp	rax, rdi
-	jbe	LBB2_24
-LBB2_13:
-	xor	r8d, r8d
-LBB2_14:
-	mov	r9, r8
-	not	r9
-	add	r9, rcx
+	.p2align 4,,10
+	.p2align 3
+.L5:
+	cmp	rdi, rcx
 	mov	r10, rcx
-	and	r10, 7
-	je	LBB2_18
-## %bb.15:
-	neg	r10
-	xor	edx, edx
-	.p2align	4, 0x90
-LBB2_16:                                ## =>This Inner Loop Header: Depth=1
-	mov	eax, dword ptr [rdi]
-	add	rdi, 4
-	mov	dword ptr [rsi], eax
-	add	rsi, 4
-	dec	rdx
-	cmp	r10, rdx
-	jne	LBB2_16
-## %bb.17:
-	sub	r8, rdx
-LBB2_18:
-	cmp	r9, 7
-	jb	LBB2_21
-## %bb.19:
-	sub	rcx, r8
-	xor	eax, eax
-	.p2align	4, 0x90
-LBB2_20:                                ## =>This Inner Loop Header: Depth=1
-	mov	edx, dword ptr [rdi + 4*rax]
-	mov	dword ptr [rsi + 4*rax], edx
-	mov	edx, dword ptr [rdi + 4*rax + 4]
-	mov	dword ptr [rsi + 4*rax + 4], edx
-	mov	edx, dword ptr [rdi + 4*rax + 8]
-	mov	dword ptr [rsi + 4*rax + 8], edx
-	mov	edx, dword ptr [rdi + 4*rax + 12]
-	mov	dword ptr [rsi + 4*rax + 12], edx
-	mov	edx, dword ptr [rdi + 4*rax + 16]
-	mov	dword ptr [rsi + 4*rax + 16], edx
-	mov	edx, dword ptr [rdi + 4*rax + 20]
-	mov	dword ptr [rsi + 4*rax + 20], edx
-	mov	edx, dword ptr [rdi + 4*rax + 24]
-	mov	dword ptr [rsi + 4*rax + 24], edx
-	mov	edx, dword ptr [rdi + 4*rax + 28]
-	mov	dword ptr [rsi + 4*rax + 28], edx
-	add	rax, 8
-	cmp	rcx, rax
-	jne	LBB2_20
-	jmp	LBB2_21
-LBB2_3:
-	lea	r8, [4*rdx]
+	cmovbe	r10, rdi
 	xor	r9d, r9d
-	jmp	LBB2_4
-	.p2align	4, 0x90
-LBB2_11:                                ##   in Loop: Header=BB2_4 Depth=1
-	inc	r9
-	add	rsi, r8
-	cmp	r9, rcx
-	je	LBB2_21
-LBB2_4:                                 ## =>This Loop Header: Depth=1
-                                        ##     Child Loop BB2_5 Depth 2
-                                        ##     Child Loop BB2_7 Depth 2
-                                        ##     Child Loop BB2_10 Depth 2
-	xor	eax, eax
-	.p2align	4, 0x90
-LBB2_5:                                 ##   Parent Loop BB2_4 Depth=1
-                                        ## =>  This Inner Loop Header: Depth=2
-	mov	r10d, dword ptr [rdi]
-	add	rdi, 4
-	mov	dword ptr [rsi + 4*rax], r10d
-	add	rax, 3
-	cmp	rax, rdx
-	jb	LBB2_5
-## %bb.6:                               ##   in Loop: Header=BB2_4 Depth=1
-	mov	eax, 1
-	.p2align	4, 0x90
-LBB2_7:                                 ##   Parent Loop BB2_4 Depth=1
-                                        ## =>  This Inner Loop Header: Depth=2
-	mov	r10d, dword ptr [rdi]
-	add	rdi, 4
-	mov	dword ptr [rsi + 4*rax], r10d
-	add	rax, 3
-	cmp	rax, rdx
-	jb	LBB2_7
-## %bb.8:                               ##   in Loop: Header=BB2_4 Depth=1
-	cmp	rdx, 3
-	jb	LBB2_11
-## %bb.9:                               ##   in Loop: Header=BB2_4 Depth=1
-	mov	eax, 2
-	.p2align	4, 0x90
-LBB2_10:                                ##   Parent Loop BB2_4 Depth=1
-                                        ## =>  This Inner Loop Header: Depth=2
-	mov	r10d, dword ptr [rdi]
-	add	rdi, 4
-	mov	dword ptr [rsi + 4*rax], r10d
-	add	rax, 3
-	cmp	rax, rdx
-	jb	LBB2_10
-	jmp	LBB2_11
-LBB2_24:
-	mov	r8, rcx
-	and	r8, -8
-	lea	rax, [r8 - 8]
-	mov	rdx, rax
-	shr	rdx, 3
-	inc	rdx
-	mov	r9d, edx
-	and	r9d, 3
-	cmp	rax, 24
-	jae	LBB2_26
-## %bb.25:
-	xor	eax, eax
-	test	r9, r9
-	jne	LBB2_29
-	jmp	LBB2_31
-LBB2_26:
-	sub	rdx, r9
-	xor	eax, eax
-	.p2align	4, 0x90
-LBB2_27:                                ## =>This Inner Loop Header: Depth=1
-	movups	xmm0, xmmword ptr [rdi + 4*rax]
-	movups	xmm1, xmmword ptr [rdi + 4*rax + 16]
-	movups	xmmword ptr [rsi + 4*rax], xmm0
-	movups	xmmword ptr [rsi + 4*rax + 16], xmm1
-	movups	xmm0, xmmword ptr [rdi + 4*rax + 32]
-	movups	xmm1, xmmword ptr [rdi + 4*rax + 48]
-	movups	xmmword ptr [rsi + 4*rax + 32], xmm0
-	movups	xmmword ptr [rsi + 4*rax + 48], xmm1
-	movups	xmm0, xmmword ptr [rdi + 4*rax + 64]
-	movups	xmm1, xmmword ptr [rdi + 4*rax + 80]
-	movups	xmmword ptr [rsi + 4*rax + 64], xmm0
-	movups	xmmword ptr [rsi + 4*rax + 80], xmm1
-	movups	xmm0, xmmword ptr [rdi + 4*rax + 96]
-	movups	xmm1, xmmword ptr [rdi + 4*rax + 112]
-	movups	xmmword ptr [rsi + 4*rax + 96], xmm0
-	movups	xmmword ptr [rsi + 4*rax + 112], xmm1
-	add	rax, 32
-	add	rdx, -4
-	jne	LBB2_27
-## %bb.28:
-	test	r9, r9
-	je	LBB2_31
-LBB2_29:
-	lea	rax, [4*rax + 16]
-	neg	r9
-	.p2align	4, 0x90
-LBB2_30:                                ## =>This Inner Loop Header: Depth=1
-	movups	xmm0, xmmword ptr [rdi + rax - 16]
-	movups	xmm1, xmmword ptr [rdi + rax]
-	movups	xmmword ptr [rsi + rax - 16], xmm0
-	movups	xmmword ptr [rsi + rax], xmm1
-	add	rax, 32
-	inc	r9
-	jne	LBB2_30
-LBB2_31:
-	cmp	r8, rcx
-	jne	LBB2_32
-LBB2_21:
+	.p2align 4,,10
+	.p2align 3
+.L4:
+	mov	rax, r9
+	.p2align 4,,10
+	.p2align 3
+.L3:
+	mov	edx, DWORD PTR [r8+rax*4]
+	add	rax, rcx
+	add	rsi, 4
+	mov	DWORD PTR -4[rsi], edx
+	cmp	rdi, rax
+	ja	.L3
+	add	r9, 1
+	cmp	r9, r10
+	jb	.L4
+	add	r11, 1
+	add	r8, rbp
+	cmp	rbx, r11
+	jne	.L5
+.L1:
+	pop	rbx
 	pop	rbp
 	ret
-LBB2_32:
-	lea	rdi, [rdi + 4*r8]
-	lea	rsi, [rsi + 4*r8]
-	jmp	LBB2_14
-                                        ## -- End function
-	.globl	_transformz5            ## -- Begin function transformz5
-	.p2align	4, 0x90
-_transformz5:                           ## @transformz5
-## %bb.0:
-	push	rbp
-	mov	rbp, rsp
+.L13:
+	ret
+	.size	transform3, .-transform3
+	.p2align 4
+	.globl	transformz2
+	.type	transformz2, @function
+transformz2:
+	endbr64
 	test	rcx, rcx
-	je	LBB3_27
-## %bb.1:
-	test	rdx, rdx
-	je	LBB3_27
-## %bb.2:
-	cmp	rdx, 1
-	jne	LBB3_3
-## %bb.18:
-	cmp	rcx, 7
-	jbe	LBB3_19
-## %bb.28:
-	lea	rax, [rdi + 4*rcx]
-	cmp	rax, rsi
-	jbe	LBB3_30
-## %bb.29:
-	lea	rax, [rsi + 4*rcx]
-	cmp	rax, rdi
-	jbe	LBB3_30
-LBB3_19:
-	xor	r8d, r8d
-LBB3_20:
-	mov	r9, r8
-	not	r9
-	add	r9, rcx
-	mov	r10, rcx
-	and	r10, 7
-	je	LBB3_24
-## %bb.21:
-	neg	r10
-	xor	edx, edx
-	.p2align	4, 0x90
-LBB3_22:                                ## =>This Inner Loop Header: Depth=1
-	mov	eax, dword ptr [rdi]
-	add	rdi, 4
-	mov	dword ptr [rsi], eax
-	add	rsi, 4
-	dec	rdx
-	cmp	r10, rdx
-	jne	LBB3_22
-## %bb.23:
-	sub	r8, rdx
-LBB3_24:
-	cmp	r9, 7
-	jb	LBB3_27
-## %bb.25:
-	sub	rcx, r8
-	xor	eax, eax
-	.p2align	4, 0x90
-LBB3_26:                                ## =>This Inner Loop Header: Depth=1
-	mov	edx, dword ptr [rdi + 4*rax]
-	mov	dword ptr [rsi + 4*rax], edx
-	mov	edx, dword ptr [rdi + 4*rax + 4]
-	mov	dword ptr [rsi + 4*rax + 4], edx
-	mov	edx, dword ptr [rdi + 4*rax + 8]
-	mov	dword ptr [rsi + 4*rax + 8], edx
-	mov	edx, dword ptr [rdi + 4*rax + 12]
-	mov	dword ptr [rsi + 4*rax + 12], edx
-	mov	edx, dword ptr [rdi + 4*rax + 16]
-	mov	dword ptr [rsi + 4*rax + 16], edx
-	mov	edx, dword ptr [rdi + 4*rax + 20]
-	mov	dword ptr [rsi + 4*rax + 20], edx
-	mov	edx, dword ptr [rdi + 4*rax + 24]
-	mov	dword ptr [rsi + 4*rax + 24], edx
-	mov	edx, dword ptr [rdi + 4*rax + 28]
-	mov	dword ptr [rsi + 4*rax + 28], edx
-	add	rax, 8
+	je	.L57
+	push	r15
+	lea	rax, -1[rdx]
+	mov	r8, rdx
+	lea	r10, 4[rsi]
+	push	r14
+	push	r13
+	push	r12
+	mov	r12, rcx
+	push	rbp
+	push	rbx
+	lea	rbx, 0[0+rdx*4]
+	sub	rsp, 64
+	mov	QWORD PTR -64[rsp], rax
+	shr	rax
+	lea	r15, 1[rax]
+	lea	rcx, 0[0+r15*4]
+	mov	r14, r15
+	mov	rdx, r15
+	and	r14, -4
+	mov	QWORD PTR -88[rsp], rcx
+	shr	rdx, 2
+	lea	rcx, 4[0+rax*8]
+	mov	QWORD PTR -80[rsp], rcx
+	lea	rcx, 0[0+r14*4]
+	sal	rdx, 4
+	mov	QWORD PTR -32[rsp], rcx
+	lea	rcx, 0[0+r14*8]
+	lea	r11, 8[rcx]
+	mov	QWORD PTR -8[rsp], rcx
+	add	rcx, 16
+	mov	QWORD PTR 48[rsp], rcx
+	lea	rcx, -2[r8]
+	mov	rbp, rcx
+	mov	QWORD PTR -40[rsp], rdx
+	lea	rdx, 2[r14+r14]
+	shr	rbp
+	mov	QWORD PTR [rsp], rdx
+	add	rdx, 2
+	lea	rax, 2[rbp+rax]
+	add	rbp, 1
+	mov	QWORD PTR 32[rsp], rdx
+	sal	rax, 2
+	mov	r13, rbp
+	mov	QWORD PTR -72[rsp], rcx
+	mov	QWORD PTR -104[rsp], rax
+	lea	rax, 0[0+rbp*8]
+	and	r13, -4
+	mov	QWORD PTR -96[rsp], rax
+	mov	rax, rbp
+	lea	rcx, 4[0+r13*8]
+	shr	rax, 2
+	mov	QWORD PTR -24[rsp], rcx
+	sal	rax, 4
+	mov	QWORD PTR 24[rsp], r11
+	xor	r11d, r11d
+	mov	QWORD PTR -56[rsp], rax
+	lea	rax, 0[0+r13*4]
+	mov	QWORD PTR -48[rsp], rax
+	lea	rax, [r13+r13]
+	lea	rdx, 3[rax]
+	add	rax, 5
+	mov	QWORD PTR 16[rsp], rax
+	lea	rax, 16[rcx]
+	mov	QWORD PTR -16[rsp], rdx
+	lea	rdx, 8[rcx]
+	mov	QWORD PTR 40[rsp], rax
+	lea	rax, 0[0+rbp*4]
+	mov	QWORD PTR 8[rsp], rdx
+	mov	QWORD PTR -112[rsp], rax
+	.p2align 4,,10
+	.p2align 3
+.L30:
+	test	r8, r8
+	je	.L19
+	mov	rax, QWORD PTR -88[rsp]
+	lea	rcx, [rdi+rax]
+	mov	rax, QWORD PTR -80[rsp]
+	add	rax, rsi
+	cmp	rdi, rax
+	setnb	dl
+	cmp	rsi, rcx
+	setnb	al
+	or	dl, al
+	je	.L32
+	cmp	QWORD PTR -64[rsp], 19
+	jbe	.L32
+	mov	r9, QWORD PTR -40[rsp]
+	mov	rdx, rdi
+	mov	rax, rsi
+	add	r9, rdi
+	.p2align 4,,10
+	.p2align 3
+.L23:
+	movdqu	xmm0, XMMWORD PTR [rdx]
+	add	rdx, 16
+	add	rax, 32
+	pshufd	xmm1, xmm0, 85
+	movd	DWORD PTR -32[rax], xmm0
+	movd	DWORD PTR -24[rax], xmm1
+	movdqa	xmm1, xmm0
+	punpckhdq	xmm1, xmm0
+	pshufd	xmm0, xmm0, 255
+	movd	DWORD PTR -16[rax], xmm1
+	movd	DWORD PTR -8[rax], xmm0
+	cmp	rdx, r9
+	jne	.L23
+	mov	rax, QWORD PTR -32[rsp]
+	add	rax, rdi
+	cmp	r15, r14
+	je	.L21
+	mov	edx, DWORD PTR [rax]
+	mov	r9, QWORD PTR -8[rsp]
+	mov	DWORD PTR [rsi+r9], edx
+	cmp	r8, QWORD PTR [rsp]
+	jbe	.L21
+	mov	edx, DWORD PTR 4[rax]
+	mov	r9, QWORD PTR 24[rsp]
+	mov	DWORD PTR [rsi+r9], edx
+	cmp	r8, QWORD PTR 32[rsp]
+	jbe	.L21
+	mov	eax, DWORD PTR 8[rax]
+	mov	rdx, QWORD PTR 48[rsp]
+	mov	DWORD PTR [rsi+rdx], eax
+.L21:
+	mov	rax, QWORD PTR -96[rsp]
+	add	rdi, QWORD PTR -104[rsp]
+	cmp	rdi, r10
+	setbe	dl
+	add	rax, rsi
 	cmp	rcx, rax
-	jne	LBB3_26
-	jmp	LBB3_27
-LBB3_3:
-	lea	r8, [4*rdx]
-	xor	r9d, r9d
-	jmp	LBB3_4
-	.p2align	4, 0x90
-LBB3_17:                                ##   in Loop: Header=BB3_4 Depth=1
-	inc	r9
-	add	rsi, r8
-	cmp	r9, rcx
-	je	LBB3_27
-LBB3_4:                                 ## =>This Loop Header: Depth=1
-                                        ##     Child Loop BB3_5 Depth 2
-                                        ##     Child Loop BB3_7 Depth 2
-                                        ##     Child Loop BB3_10 Depth 2
-                                        ##     Child Loop BB3_13 Depth 2
-                                        ##     Child Loop BB3_16 Depth 2
-	xor	eax, eax
-	.p2align	4, 0x90
-LBB3_5:                                 ##   Parent Loop BB3_4 Depth=1
-                                        ## =>  This Inner Loop Header: Depth=2
-	mov	r10d, dword ptr [rdi]
-	add	rdi, 4
-	mov	dword ptr [rsi + 4*rax], r10d
-	add	rax, 5
-	cmp	rax, rdx
-	jb	LBB3_5
-## %bb.6:                               ##   in Loop: Header=BB3_4 Depth=1
-	mov	eax, 1
-	.p2align	4, 0x90
-LBB3_7:                                 ##   Parent Loop BB3_4 Depth=1
-                                        ## =>  This Inner Loop Header: Depth=2
-	mov	r10d, dword ptr [rdi]
-	add	rdi, 4
-	mov	dword ptr [rsi + 4*rax], r10d
-	add	rax, 5
-	cmp	rax, rdx
-	jb	LBB3_7
-## %bb.8:                               ##   in Loop: Header=BB3_4 Depth=1
-	cmp	rdx, 3
-	jb	LBB3_17
-## %bb.9:                               ##   in Loop: Header=BB3_4 Depth=1
-	mov	eax, 2
-	.p2align	4, 0x90
-LBB3_10:                                ##   Parent Loop BB3_4 Depth=1
-                                        ## =>  This Inner Loop Header: Depth=2
-	mov	r10d, dword ptr [rdi]
-	add	rdi, 4
-	mov	dword ptr [rsi + 4*rax], r10d
-	add	rax, 5
-	cmp	rax, rdx
-	jb	LBB3_10
-## %bb.11:                              ##   in Loop: Header=BB3_4 Depth=1
-	cmp	rdx, 4
-	jb	LBB3_17
-## %bb.12:                              ##   in Loop: Header=BB3_4 Depth=1
-	mov	eax, 3
-	.p2align	4, 0x90
-LBB3_13:                                ##   Parent Loop BB3_4 Depth=1
-                                        ## =>  This Inner Loop Header: Depth=2
-	mov	r10d, dword ptr [rdi]
-	add	rdi, 4
-	mov	dword ptr [rsi + 4*rax], r10d
-	add	rax, 5
-	cmp	rax, rdx
-	jb	LBB3_13
-## %bb.14:                              ##   in Loop: Header=BB3_4 Depth=1
-	cmp	rdx, 5
-	jb	LBB3_17
-## %bb.15:                              ##   in Loop: Header=BB3_4 Depth=1
-	mov	eax, 4
-	.p2align	4, 0x90
-LBB3_16:                                ##   Parent Loop BB3_4 Depth=1
-                                        ## =>  This Inner Loop Header: Depth=2
-	mov	r10d, dword ptr [rdi]
-	add	rdi, 4
-	mov	dword ptr [rsi + 4*rax], r10d
-	add	rax, 5
-	cmp	rax, rdx
-	jb	LBB3_16
-	jmp	LBB3_17
-LBB3_30:
-	mov	r8, rcx
-	and	r8, -8
-	lea	rax, [r8 - 8]
-	mov	rdx, rax
-	shr	rdx, 3
-	inc	rdx
-	mov	r9d, edx
-	and	r9d, 3
-	cmp	rax, 24
-	jae	LBB3_32
-## %bb.31:
-	xor	eax, eax
-	test	r9, r9
-	jne	LBB3_35
-	jmp	LBB3_37
-LBB3_32:
-	sub	rdx, r9
-	xor	eax, eax
-	.p2align	4, 0x90
-LBB3_33:                                ## =>This Inner Loop Header: Depth=1
-	movups	xmm0, xmmword ptr [rdi + 4*rax]
-	movups	xmm1, xmmword ptr [rdi + 4*rax + 16]
-	movups	xmmword ptr [rsi + 4*rax], xmm0
-	movups	xmmword ptr [rsi + 4*rax + 16], xmm1
-	movups	xmm0, xmmword ptr [rdi + 4*rax + 32]
-	movups	xmm1, xmmword ptr [rdi + 4*rax + 48]
-	movups	xmmword ptr [rsi + 4*rax + 32], xmm0
-	movups	xmmword ptr [rsi + 4*rax + 48], xmm1
-	movups	xmm0, xmmword ptr [rdi + 4*rax + 64]
-	movups	xmm1, xmmword ptr [rdi + 4*rax + 80]
-	movups	xmmword ptr [rsi + 4*rax + 64], xmm0
-	movups	xmmword ptr [rsi + 4*rax + 80], xmm1
-	movups	xmm0, xmmword ptr [rdi + 4*rax + 96]
-	movups	xmm1, xmmword ptr [rdi + 4*rax + 112]
-	movups	xmmword ptr [rsi + 4*rax + 96], xmm0
-	movups	xmmword ptr [rsi + 4*rax + 112], xmm1
+	setnb	al
+	or	dl, al
+	je	.L33
+	cmp	QWORD PTR -72[rsp], 19
+	jbe	.L33
+	mov	rax, QWORD PTR -56[rsp]
+	mov	rdx, rcx
+	lea	rdi, [rax+rcx]
+	mov	rax, r10
+	.p2align 4,,10
+	.p2align 3
+.L27:
+	movdqu	xmm0, XMMWORD PTR [rdx]
+	add	rdx, 16
 	add	rax, 32
-	add	rdx, -4
-	jne	LBB3_33
-## %bb.34:
-	test	r9, r9
-	je	LBB3_37
-LBB3_35:
-	lea	rax, [4*rax + 16]
-	neg	r9
-	.p2align	4, 0x90
-LBB3_36:                                ## =>This Inner Loop Header: Depth=1
-	movups	xmm0, xmmword ptr [rdi + rax - 16]
-	movups	xmm1, xmmword ptr [rdi + rax]
-	movups	xmmword ptr [rsi + rax - 16], xmm0
-	movups	xmmword ptr [rsi + rax], xmm1
-	add	rax, 32
-	inc	r9
-	jne	LBB3_36
-LBB3_37:
-	cmp	r8, rcx
-	jne	LBB3_38
-LBB3_27:
+	pshufd	xmm1, xmm0, 85
+	movd	DWORD PTR -32[rax], xmm0
+	movd	DWORD PTR -24[rax], xmm1
+	movdqa	xmm1, xmm0
+	punpckhdq	xmm1, xmm0
+	pshufd	xmm0, xmm0, 255
+	movd	DWORD PTR -16[rax], xmm1
+	movd	DWORD PTR -8[rax], xmm0
+	cmp	rdi, rdx
+	jne	.L27
+	mov	rax, QWORD PTR -48[rsp]
+	add	rax, rcx
+	cmp	rbp, r13
+	je	.L29
+	mov	edx, DWORD PTR [rax]
+	mov	rdi, QWORD PTR -24[rsp]
+	mov	DWORD PTR [rsi+rdi], edx
+	cmp	r8, QWORD PTR -16[rsp]
+	jbe	.L29
+	mov	edx, DWORD PTR 4[rax]
+	mov	rdi, QWORD PTR 8[rsp]
+	mov	DWORD PTR [rsi+rdi], edx
+	cmp	r8, QWORD PTR 16[rsp]
+	jbe	.L29
+	mov	eax, DWORD PTR 8[rax]
+	mov	rdi, QWORD PTR 40[rsp]
+	mov	DWORD PTR [rsi+rdi], eax
+.L29:
+	mov	rax, QWORD PTR -112[rsp]
+	lea	rdi, [rcx+rax]
+.L19:
+	add	r11, 1
+	add	rsi, rbx
+	add	r10, rbx
+	cmp	r12, r11
+	jne	.L30
+	add	rsp, 64
+	pop	rbx
 	pop	rbp
+	pop	r12
+	pop	r13
+	pop	r14
+	pop	r15
 	ret
-LBB3_38:
-	lea	rdi, [rdi + 4*r8]
-	lea	rsi, [rsi + 4*r8]
-	jmp	LBB3_20
-                                        ## -- End function
-
-.subsections_via_symbols
+.L33:
+	mov	eax, 1
+	.p2align 4,,10
+	.p2align 3
+.L26:
+	mov	edx, DWORD PTR -2[rcx+rax*2]
+	mov	DWORD PTR [rsi+rax*4], edx
+	add	rax, 2
+	cmp	r8, rax
+	ja	.L26
+	jmp	.L29
+.L32:
+	xor	eax, eax
+	.p2align 4,,10
+	.p2align 3
+.L22:
+	mov	edx, DWORD PTR [rdi+rax*2]
+	mov	DWORD PTR [rsi+rax*4], edx
+	add	rax, 2
+	cmp	r8, rax
+	ja	.L22
+	cmp	r8, 1
+	jne	.L21
+	mov	rdi, rcx
+	jmp	.L19
+	.p2align 4,,10
+	.p2align 3
+.L57:
+	ret
+	.size	transformz2, .-transformz2
+	.p2align 4
+	.globl	transformz3
+	.type	transformz3, @function
+transformz3:
+	endbr64
+	test	rcx, rcx
+	je	.L86
+	push	r15
+	lea	rax, 0[0+rdx*4]
+	mov	r8, rsi
+	mov	r10, rdx
+	push	r14
+	movdqa	xmm5, XMMWORD PTR .LC0[rip]
+	push	r13
+	movdqa	xmm4, XMMWORD PTR .LC1[rip]
+	mov	r13, rcx
+	push	r12
+	movabs	r12, -6148914691236517205
+	push	rbp
+	xor	ebp, ebp
+	push	rbx
+	mov	QWORD PTR -24[rsp], rax
+	lea	rax, -1[rdx]
+	mov	QWORD PTR -16[rsp], rax
+	.p2align 4,,10
+	.p2align 3
+.L68:
+	mov	r11, QWORD PTR -16[rsp]
+	mov	rbx, r8
+	xor	ecx, ecx
+.L67:
+	lea	r14, 1[rcx]
+	cmp	r10, rcx
+	jbe	.L62
+	mov	rax, r11
+	lea	r14, 1[rcx]
+	mul	r12
+	shr	rdx
+	lea	rax, [rdx+rdx*2]
+	lea	r9, 1[rdx]
+	add	rax, r14
+	lea	rax, [r8+rax*4]
+	cmp	rdi, rax
+	lea	rax, [rdi+r9*4]
+	setnb	dl
+	cmp	rax, rbx
+	setbe	al
+	or	dl, al
+	je	.L69
+	cmp	r10, -3
+	setbe	dl
+	cmp	r11, 41
+	seta	al
+	test	dl, al
+	je	.L69
+	lea	rax, 4[rdi]
+	mov	r15, r9
+	movq	xmm2, rdi
+	xor	edx, edx
+	movq	xmm6, rax
+	shr	r15, 2
+	mov	rax, rbx
+	punpcklqdq	xmm2, xmm6
+	.p2align 4,,10
+	.p2align 3
+.L64:
+	mov	rsi, rdx
+	movdqa	xmm0, xmm2
+	add	rdx, 1
+	add	rax, 48
+	sal	rsi, 4
+	movdqa	xmm1, xmm0
+	paddq	xmm2, xmm5
+	movdqu	xmm0, XMMWORD PTR [rdi+rsi]
+	paddq	xmm1, xmm4
+	pshufd	xmm3, xmm0, 85
+	movd	DWORD PTR -48[rax], xmm0
+	movd	DWORD PTR -36[rax], xmm3
+	movdqa	xmm3, xmm0
+	punpckhdq	xmm3, xmm0
+	pshufd	xmm0, xmm0, 255
+	movd	DWORD PTR -24[rax], xmm3
+	movd	DWORD PTR -12[rax], xmm0
+	cmp	rdx, r15
+	jb	.L64
+	mov	rdx, r9
+	movhlps	xmm7, xmm1
+	and	rdx, -4
+	lea	rax, [rdx+rdx*2]
+	add	rax, rcx
+	lea	rcx, [rdi+rdx*4]
+	movq	rdi, xmm7
+	cmp	r9, rdx
+	je	.L62
+	mov	esi, DWORD PTR [rcx]
+	lea	rdi, 4[rcx]
+	lea	rdx, 0[0+rax*4]
+	mov	DWORD PTR [r8+rax*4], esi
+	lea	rsi, 3[rax]
+	cmp	r10, rsi
+	jbe	.L62
+	mov	esi, DWORD PTR 4[rcx]
+	add	rax, 6
+	lea	rdi, 8[rcx]
+	mov	DWORD PTR 12[r8+rdx], esi
+	cmp	r10, rax
+	jbe	.L62
+	mov	eax, DWORD PTR 8[rcx]
+	lea	rdi, 12[rcx]
+	mov	DWORD PTR 24[r8+rdx], eax
+.L62:
+	mov	rcx, r14
+	add	rbx, 4
+	sub	r11, 1
+	cmp	r14, 3
+	jne	.L67
+	add	rbp, 1
+	add	r8, QWORD PTR -24[rsp]
+	cmp	r13, rbp
+	jne	.L68
+	pop	rbx
+	pop	rbp
+	pop	r12
+	pop	r13
+	pop	r14
+	pop	r15
+	ret
+	.p2align 4,,10
+	.p2align 3
+.L69:
+	mov	rax, rcx
+	.p2align 4,,10
+	.p2align 3
+.L63:
+	mov	edx, DWORD PTR [rdi]
+	add	rdi, 4
+	mov	DWORD PTR [r8+rax*4], edx
+	add	rax, 3
+	cmp	r10, rax
+	ja	.L63
+	jmp	.L62
+.L86:
+	ret
+	.size	transformz3, .-transformz3
+	.p2align 4
+	.globl	transformz5
+	.type	transformz5, @function
+transformz5:
+	endbr64
+	test	rcx, rcx
+	je	.L115
+	push	r15
+	lea	rax, 0[0+rdx*4]
+	mov	r9, rsi
+	mov	r10, rdx
+	push	r14
+	movdqa	xmm5, XMMWORD PTR .LC0[rip]
+	push	r13
+	movdqa	xmm4, XMMWORD PTR .LC1[rip]
+	mov	r13, rcx
+	push	r12
+	xor	r12d, r12d
+	push	rbp
+	lea	rbp, -1[rdx]
+	push	rbx
+	movabs	rbx, -3689348814741910323
+	mov	QWORD PTR -16[rsp], rax
+	.p2align 4,,10
+	.p2align 3
+.L97:
+	mov	r11, r9
+	xor	ecx, ecx
+.L96:
+	lea	r8, 1[rcx]
+	cmp	r10, rcx
+	jbe	.L91
+	mov	rsi, rbp
+	lea	r8, 1[rcx]
+	sub	rsi, rcx
+	mov	rax, rsi
+	mul	rbx
+	shr	rdx, 2
+	lea	rax, [rdx+rdx*4]
+	lea	r14, 1[rdx]
+	add	rax, r8
+	lea	rax, [r9+rax*4]
+	cmp	rdi, rax
+	lea	rax, [rdi+r14*4]
+	setnb	dl
+	cmp	rax, r11
+	setbe	al
+	or	dl, al
+	je	.L98
+	cmp	r10, -5
+	setbe	dl
+	cmp	rsi, 69
+	seta	al
+	test	dl, al
+	je	.L98
+	lea	rax, 4[rdi]
+	mov	r15, r14
+	movq	xmm2, rdi
+	xor	edx, edx
+	movq	xmm6, rax
+	shr	r15, 2
+	mov	rax, r11
+	punpcklqdq	xmm2, xmm6
+	.p2align 4,,10
+	.p2align 3
+.L93:
+	mov	rsi, rdx
+	movdqa	xmm0, xmm2
+	add	rdx, 1
+	add	rax, 80
+	sal	rsi, 4
+	movdqa	xmm1, xmm0
+	paddq	xmm2, xmm5
+	movdqu	xmm0, XMMWORD PTR [rdi+rsi]
+	paddq	xmm1, xmm4
+	pshufd	xmm3, xmm0, 85
+	movd	DWORD PTR -80[rax], xmm0
+	movd	DWORD PTR -60[rax], xmm3
+	movdqa	xmm3, xmm0
+	punpckhdq	xmm3, xmm0
+	pshufd	xmm0, xmm0, 255
+	movd	DWORD PTR -40[rax], xmm3
+	movd	DWORD PTR -20[rax], xmm0
+	cmp	rdx, r15
+	jb	.L93
+	mov	rsi, r14
+	movhlps	xmm7, xmm1
+	and	rsi, -4
+	lea	rdx, 0[0+rsi*4]
+	lea	rax, [rdx+rsi]
+	add	rdx, rdi
+	movq	rdi, xmm7
+	add	rax, rcx
+	cmp	r14, rsi
+	je	.L91
+	mov	esi, DWORD PTR [rdx]
+	lea	rdi, 4[rdx]
+	lea	rcx, 0[0+rax*4]
+	mov	DWORD PTR [r9+rax*4], esi
+	lea	rsi, 5[rax]
+	cmp	r10, rsi
+	jbe	.L91
+	mov	esi, DWORD PTR 4[rdx]
+	add	rax, 10
+	lea	rdi, 8[rdx]
+	mov	DWORD PTR 20[r9+rcx], esi
+	cmp	r10, rax
+	jbe	.L91
+	mov	eax, DWORD PTR 8[rdx]
+	lea	rdi, 12[rdx]
+	mov	DWORD PTR 40[r9+rcx], eax
+.L91:
+	mov	rcx, r8
+	add	r11, 4
+	cmp	r8, 5
+	jne	.L96
+	add	r12, 1
+	add	r9, QWORD PTR -16[rsp]
+	cmp	r13, r12
+	jne	.L97
+	pop	rbx
+	pop	rbp
+	pop	r12
+	pop	r13
+	pop	r14
+	pop	r15
+	ret
+	.p2align 4,,10
+	.p2align 3
+.L98:
+	mov	rax, rcx
+	.p2align 4,,10
+	.p2align 3
+.L92:
+	mov	edx, DWORD PTR [rdi]
+	add	rdi, 4
+	mov	DWORD PTR [r9+rax*4], edx
+	add	rax, 5
+	cmp	r10, rax
+	ja	.L92
+	jmp	.L91
+.L115:
+	ret
+	.size	transformz5, .-transformz5
+	.section	.rodata.cst16,"aM",@progbits,16
+	.align 16
+.LC0:
+	.quad	16
+	.quad	16
+	.align 16
+.LC1:
+	.quad	12
+	.quad	12
+	.ident	"GCC: (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0"
+	.section	.note.GNU-stack,"",@progbits
+	.section	.note.gnu.property,"a"
+	.align 8
+	.long	 1f - 0f
+	.long	 4f - 1f
+	.long	 5
+0:
+	.string	 "GNU"
+1:
+	.align 8
+	.long	 0xc0000002
+	.long	 3f - 2f
+2:
+	.long	 0x3
+3:
+	.align 8
+4:
