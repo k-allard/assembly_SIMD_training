@@ -1,9 +1,9 @@
 	.section	__TEXT,__text,regular,pure_instructions
 	.build_version macos, 10, 15	sdk_version 10, 15, 4
 	.intel_syntax noprefix
-	.globl	_matrixTransformG5      ## -- Begin function matrixTransformG5
+	.globl	__Z20matrixTransformG5AsmPiS_ ## -- Begin function _Z17matrixTransformG5PiS_
 	.p2align	4, 0x90
-_matrixTransformG5:                     ## @matrixTransformG5
+__Z20matrixTransformG5AsmPiS_:             ## @_Z17matrixTransformG5PiS_
 	.cfi_startproc
 ## %bb.0:
 	push	rbp
@@ -11,45 +11,37 @@ _matrixTransformG5:                     ## @matrixTransformG5
 	.cfi_offset rbp, -16
 	mov	rbp, rsp
 	.cfi_def_cfa_register rbp
-	mov	eax, 60
+	add	rsi, 16
+	add	rdi, 768
+	xor	r8d, r8d
 	.p2align	4, 0x90
-LBB0_1:                                 ## =>This Inner Loop Header: Depth=1
-	mov	ecx, dword ptr [rdi + rax - 60]
-	mov	dword ptr [rsi + rax - 60], ecx
-	mov	ecx, dword ptr [rdi + rax - 28]
-	mov	dword ptr [rsi + rax - 56], ecx
-	mov	ecx, dword ptr [rdi + rax - 56]
-	mov	dword ptr [rsi + rax - 52], ecx
-	mov	ecx, dword ptr [rdi + rax - 24]
-	mov	dword ptr [rsi + rax - 48], ecx
-	mov	ecx, dword ptr [rdi + rax - 52]
-	mov	dword ptr [rsi + rax - 44], ecx
-	mov	ecx, dword ptr [rdi + rax - 20]
-	mov	dword ptr [rsi + rax - 40], ecx
-	mov	ecx, dword ptr [rdi + rax - 48]
-	mov	dword ptr [rsi + rax - 36], ecx
-	mov	ecx, dword ptr [rdi + rax - 16]
-	mov	dword ptr [rsi + rax - 32], ecx
-	mov	ecx, dword ptr [rdi + rax - 44]
-	mov	dword ptr [rsi + rax - 28], ecx
-	mov	ecx, dword ptr [rdi + rax - 12]
-	mov	dword ptr [rsi + rax - 24], ecx
-	mov	ecx, dword ptr [rdi + rax - 40]
-	mov	dword ptr [rsi + rax - 20], ecx
-	mov	ecx, dword ptr [rdi + rax - 8]
-	mov	dword ptr [rsi + rax - 16], ecx
-	mov	ecx, dword ptr [rdi + rax - 36]
-	mov	dword ptr [rsi + rax - 12], ecx
-	mov	ecx, dword ptr [rdi + rax - 4]
-	mov	dword ptr [rsi + rax - 8], ecx
-	mov	ecx, dword ptr [rdi + rax - 32]
-	mov	dword ptr [rsi + rax - 4], ecx
-	mov	ecx, dword ptr [rdi + rax]
-	mov	dword ptr [rsi + rax], ecx
-	add	rax, 64
-	cmp	rax, 1020
+LBB0_1:                                 ## =>This Loop Header: Depth=1
+                                        ##     Child Loop BB0_2 Depth 2
+	mov	rcx, -48
+	mov	rdx, rsi
+	.p2align	4, 0x90
+LBB0_2:                                 ##   Parent Loop BB0_1 Depth=1
+                                        ## =>  This Inner Loop Header: Depth=2
+	mov	eax, dword ptr [rdi + 4*rcx - 576]
+	mov	dword ptr [rdx - 16], eax
+	mov	eax, dword ptr [rdi + 4*rcx - 384]
+	mov	dword ptr [rdx - 12], eax
+	mov	eax, dword ptr [rdi + 4*rcx - 192]
+	mov	dword ptr [rdx - 8], eax
+	mov	eax, dword ptr [rdi + 4*rcx]
+	mov	dword ptr [rdx - 4], eax
+	mov	eax, dword ptr [rdi + 4*rcx + 192]
+	mov	dword ptr [rdx], eax
+	add	rdx, 20
+	inc	rcx
+	jne	LBB0_2
+## %bb.3:                               ##   in Loop: Header=BB0_1 Depth=1
+	inc	r8
+	add	rsi, 960
+	add	rdi, 960
+	cmp	r8, 180
 	jne	LBB0_1
-## %bb.2:
+## %bb.4:
 	pop	rbp
 	ret
 	.cfi_endproc

@@ -33,13 +33,13 @@ int main()
 	switch (G)
 	{
 	case 2:
-		matrixTransformG2(matrix1D, matrixNew);
+		matrixTransformG2Asm(matrix1D, matrixNew);
 		break;
 	case 3:
-		matrixTransformG3(matrix1D, matrixNew);
+		matrixTransformG3Asm(matrix1D, matrixNew);
 		break;
 	case 5:
-		matrixTransformG5(matrix1D, matrixNew);
+		matrixTransformG5Asm(matrix1D, matrixNew);
 		break;
 	default:
 	    printf("ERROR: G can be 2, 3 or 5\n");

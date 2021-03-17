@@ -1,0 +1,1 @@
+g++ -S -masm=intel -Ofast -fno-stack-protector -fno-exceptions -fno-rtti -mmmx -msse -msse2 -msse3 -mssse3 -mno-sse4.1 -mno-avx -fno-asynchronous-unwind-tables -std=c++11 -o transform.s transform.cpp
