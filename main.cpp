@@ -2,6 +2,10 @@
 
 int main()
 {
+	int L = 16;	//строки
+	int Q = 2;	//столбцы
+	int G = 2;		//кол-во блоков в столбце
+
 	printf("\n-.-.-.-.-.-.-.-.-.-.-\n");
 	printf("   Initial matrix                  ");
 	printf("\n-.-.-.-.-.-.-.-.-.-.-\n");
@@ -33,13 +37,13 @@ int main()
 	switch (G)
 	{
 	case 2:
-		matrixTransformG2Asm(matrix1D, matrixNew);
+		matrixTransformG2(matrix1D, matrixNew, L, Q);
 		break;
 	case 3:
-		matrixTransformG3Asm(matrix1D, matrixNew);
+		matrixTransformG3(matrix1D, matrixNew, L, Q);
 		break;
 	case 5:
-		matrixTransformG5Asm(matrix1D, matrixNew);
+		matrixTransformG5(matrix1D, matrixNew, L, Q);
 		break;
 	default:
 	    printf("ERROR: G can be 2, 3 or 5\n");

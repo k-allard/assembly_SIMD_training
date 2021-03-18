@@ -1,6 +1,6 @@
 #include "header.h"
 
-void	matrixTransformG2(int matrix[], int matrixNew[])
+void	matrixTransformG2(int matrix[], int matrixNew[], size_t L, size_t Q)
 {
 	int blockLength = L / 2; 					
 	int index;
