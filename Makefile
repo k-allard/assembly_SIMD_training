@@ -6,7 +6,7 @@ SRCS_S =	matrixTransformG2.cpp \
 			matrixTransformG3.cpp \
 			matrixTransformG5.cpp
 
-OBJS = $(SRCS:.c=.o)
+OBJS = $(SRCS:.cpp=.o)
 
 OBJS_S = $(SRCS:.s=.o)
 
@@ -50,7 +50,7 @@ bench:
 	./mybenchmark
 
 fclean: clean
-	@rm -rf $(NAME)
+	rm -rf $(NAME)
 
 re: fclean all
 
