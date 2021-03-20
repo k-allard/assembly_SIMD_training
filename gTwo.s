@@ -54,13 +54,19 @@ LBB0_6:                                 ##   Parent Loop BB0_1 Depth=1
 	jmp	LBB0_7
 	.p2align	4, 0x90
 LBB0_3:                                 ##   in Loop: Header=BB0_1 Depth=1
+	# int i = 4
 	mov	eax, 4
 	.p2align	4, 0x90
 LBB0_4:                                 ##   Parent Loop BB0_1 Depth=1
                                         ## =>  This Inner Loop Header: Depth=2
+	# rdi == char *dest rsi == char *src									
+	# __m128 x0 = _mm_loadu_ps(dest + 4*i - 16)
 	movups	xmm0, xmmword ptr [rdx + 4*rax - 16]
+	# __m128 x1 = _mm_loadu_ps(dest + 4*i + 464)
 	movups	xmm1, xmmword ptr [rdx + 4*rax + 464]
+	# __m128 x2 = x0
 	movaps	xmm2, xmm0
+	# x2 = x2[31:0] x1[31:0] x2[63:32] x1[63:32]
 	unpcklps	xmm2, xmm1      ## xmm2 = xmm2[0],xmm1[0],xmm2[1],xmm1[1]
 	unpckhps	xmm0, xmm1      ## xmm0 = xmm0[2],xmm1[2],xmm0[3],xmm1[3]
 	movups	xmmword ptr [r11 + 8*rax - 16], xmm0
