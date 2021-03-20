@@ -1,3 +1,5 @@
 ./testProject
 testProject
 ./*.o
+mybenchmark
+./mybenchmark

@@ -47,7 +47,7 @@ dddd:
 	sed -i "s/_Z17matrixTransformG2PiS_/matrixTransformG2Asm/g" gTwo.s
 
 bench:
-	g++ bench.cpp matrixTransformG2.cpp matrixTransformG3.cpp matrixTransformG5.cpp newIdea/transformz_TEST.s   -std=c++11 -isystem -L/Users/nastya/benchmark/build/src -lbenchmark -lpthread -o mybenchmark
+	g++ bench.cpp matrixTransformG2.cpp matrixTransformG3.cpp matrixTransformG5.cpp  matrixTransformG2_unpack.cpp -std=c++11 -isystem -L/Users/nastya/benchmark/build/src -lbenchmark -lpthread -o mybenchmark
 	./mybenchmark
 
 fclean: clean

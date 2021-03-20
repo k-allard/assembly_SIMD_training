@@ -11,14 +11,12 @@ const size_t L_val = L;
 const size_t Q_val = Q;
 // const int G = 2;
 
+
 void	matrixTransformG2(int matrix[], int matrixNew[], size_t L_val, size_t Q_val);
 void	matrixTransformG3(int matrix[], int matrixNew[], size_t L_val, size_t Q_val);
 void	matrixTransformG5(int matrix[], int matrixNew[], size_t L_val, size_t Q_val); 
 
-
-void	matrixTransformG2Asm(int matrix[], int matrixNew[]);
-void	matrixTransformG3Asm(int matrix[], int matrixNew[]);
-void	matrixTransformG5Asm(int matrix[], int matrixNew[]); 
+void	matrixTransformG2_unpack(int* matrix, int* matrixNew, int L_val, int Q_val);
 
 
 static int matrix2D[L][Q];
@@ -62,26 +60,11 @@ static void BM_matrixTransformG2(benchmark::State& state) {
 }
 
 
-void transform3(const uint32_t *psrc, uint32_t *pdst, size_t L_val, size_t Q_val) noexcept;
-void transformz2(const uint32_t *psrc, uint32_t *pdst, size_t L_val, size_t Q_val) noexcept;
-void transformz3(const uint32_t *psrc, uint32_t *pdst, size_t L_val, size_t Q_val) noexcept;
-void transformz5(const uint32_t *psrc, uint32_t *pdst, size_t L_val, size_t Q_val) noexcept;
 
-static void BM_transform3(benchmark::State& state) {
+
+static void BM_matrixTransformG2_unpack(benchmark::State& state) {
   for (auto _ : state)
-    transform3((const uint32_t *)matrix1D, (uint32_t *)matrixNew, L_val, Q_val);
-}
-static void BM_transformz2(benchmark::State& state) {
-  for (auto _ : state)
-    transformz2((const uint32_t *)matrix1D, (uint32_t *)matrixNew, L_val, Q_val);
-}
-static void BM_transformz3(benchmark::State& state) {
-  for (auto _ : state)
-    transformz3((const uint32_t *)matrix1D, (uint32_t *)matrixNew, L_val, Q_val);
-}
-static void BM_transformz5(benchmark::State& state) {
-  for (auto _ : state)
-    transformz5((const uint32_t *)matrix1D, (uint32_t *)matrixNew, L_val, Q_val);
+    matrixTransformG2_unpack((int *)matrix1D, (int *)matrixNew, L, Q);
 }
 
 
@@ -90,10 +73,6 @@ BENCHMARK(BM_matrixTransformG3);
 BENCHMARK(BM_matrixTransformG2);
 
 
-BENCHMARK(BM_transform3);
-BENCHMARK(BM_transformz2);
-BENCHMARK(BM_transformz3);
-BENCHMARK(BM_transformz5);
-
+BENCHMARK(BM_matrixTransformG2_unpack);
 
 BENCHMARK_MAIN();
