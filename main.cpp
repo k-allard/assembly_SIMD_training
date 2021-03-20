@@ -2,8 +2,8 @@
 
 int main()
 {
-	int L = 16;	//строки
-	int Q = 2;	//столбцы
+	int L = 32;	//строки
+	int Q = 3;	//столбцы
 	int G = 2;		//кол-во блоков в столбце
 
 	printf("\n-.-.-.-.-.-.-.-.-.-.-\n");
@@ -30,6 +30,7 @@ int main()
         for (int i = 0; i < L; i++) {
             k++;
             matrix1D[k] = matrix2D[i][j];
+			matrixNew[k] = 0;
             printf("%5d", matrix1D[k]);
         }
     printf("\n");
@@ -38,6 +39,31 @@ int main()
 	{
 	case 2:
 		matrixTransformG2(matrix1D, matrixNew, L, Q);
+		break;
+	case 3:
+		matrixTransformG3(matrix1D, matrixNew, L, Q);
+		break;
+	case 5:
+		matrixTransformG5(matrix1D, matrixNew, L, Q);
+		break;
+	default:
+	    printf("ERROR: G can be 2, 3 or 5\n");
+		break;
+	}
+
+	printf("\n-.-.-.-.-.-.-.-.-.-.-\n");
+	printf("   Result matrix                  ");
+	printf("\n-.-.-.-.-.-.-.-.-.-.-\n");
+	for (int i = 0; i < L * Q; i++) {
+		printf("%5d", matrixNew[i]);
+		matrixNew[i] = 0;
+	}
+	printf("\n");
+
+	switch (G)
+	{
+	case 2:
+		matrixTransformG2_unpack((int*)matrix1D, (int*)matrixNew, L, Q);
 		break;
 	case 3:
 		matrixTransformG3(matrix1D, matrixNew, L, Q);

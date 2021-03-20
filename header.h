@@ -19,6 +19,7 @@
 //  L 40 
 //  Q 40 
 //  G 5
+void	matrixTransformG2_unpack(int* matrix, int* matrixNew, int L, int Q);
 
 void	matrixTransformG2Asm(int matrix[], int matrixNew[]);
 void	matrixTransformG3Asm(int matrix[], int matrixNew[]);

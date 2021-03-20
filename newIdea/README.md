@@ -265,3 +265,33 @@ Skylake	|1	|1
 Broadwell	|1	|1
 Haswell	|1	|1
 Ivy Bridge	|1	|1
+
+
+## __m128 _mm_unpackhi_ps (__m128 a, __m128 b)
+### Synopsis
+```cpp
+__m128 _mm_unpackhi_ps (__m128 a, __m128 b)
+#include <xmmintrin.h>
+Instruction: unpckhps xmm, xmm
+CPUID Flags: SSE
+```
+### Description
+Unpack and interleave single-precision (32-bit) floating-point elements from the high half a and b, and store the results in dst.
+### Operation
+```cpp
+DEFINE INTERLEAVE_HIGH_DWORDS(src1[127:0], src2[127:0]) {
+	dst[31:0] := src1[95:64] 
+	dst[63:32] := src2[95:64] 
+	dst[95:64] := src1[127:96] 
+	dst[127:96] := src2[127:96] 
+	RETURN dst[127:0]	
+}
+dst[127:0] := INTERLEAVE_HIGH_DWORDS(a[127:0], b[127:0])
+```
+### Performance
+Architecture	|Latency	|Throughput (CPI)
+--- | --- | ---
+Skylake	|1	|1
+Broadwell	|1	|1
+Haswell	|1	|1
+Ivy Bridge	|1	|1

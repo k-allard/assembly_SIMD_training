@@ -4,20 +4,21 @@ SRCS =		main.cpp
 
 SRCS_S =	matrixTransformG2.cpp \
 			matrixTransformG3.cpp \
-			matrixTransformG5.cpp
+			matrixTransformG5.cpp \
+			matrixTransformG2_unpack.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
 OBJS_S = $(SRCS:.s=.o)
 
-FLAGS = -O2 
+FLAGS = 
 FLAGSB = -Ofast -fno-stack-protector -fno-exceptions -fno-rtti -mmmx -msse -msse2 -msse3 -mssse3 -mno-sse4.1 -mno-avx -fno-asynchronous-unwind-tables -std=c++11
 
 all: $(NAME)
 
 $(NAME):
 	@echo "\x1b[33m Preparing $(NAME)...\x1b[0m"
-	g++ -o $(NAME) $(SRCS) $(SRCS_S) $(FLAGS)
+	g++ -o $(NAME) $(SRCS) $(SRCS_S)
 	@echo "\x1b[32m $(NAME) is ready!\x1b[0m"
 
 clean:
