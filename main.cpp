@@ -2,9 +2,9 @@
 
 int main()
 {
-	int L = 32;	//строки
+	int L = 24;	//строки
 	int Q = 3;	//столбцы
-	int G = 2;		//кол-во блоков в столбце
+	int G = 3;		//кол-во блоков в столбце
 
 	printf("\n-.-.-.-.-.-.-.-.-.-.-\n");
 	printf("   Initial matrix                  ");
@@ -66,7 +66,7 @@ int main()
 		matrixTransformG2_unpack((int*)matrix1D, (int*)matrixNew, L, Q);
 		break;
 	case 3:
-		matrixTransformG3(matrix1D, matrixNew, L, Q);
+		matrixTransformG3_SIMD((int*)matrix1D, (int*)matrixNew, L, Q);
 		break;
 	case 5:
 		matrixTransformG5(matrix1D, matrixNew, L, Q);

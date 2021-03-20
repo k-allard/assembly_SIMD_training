@@ -5,7 +5,8 @@ SRCS =		main.cpp
 SRCS_S =	matrixTransformG2.cpp \
 			matrixTransformG3.cpp \
 			matrixTransformG5.cpp \
-			matrixTransformG2_unpack.cpp
+			matrixTransformG2_unpack.cpp \
+			matrixTransformG3_SIMD.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
@@ -47,7 +48,8 @@ dddd:
 	sed -i "s/_Z17matrixTransformG2PiS_/matrixTransformG2Asm/g" gTwo.s
 
 bench:
-	g++ bench.cpp matrixTransformG2.cpp matrixTransformG3.cpp matrixTransformG5.cpp  matrixTransformG2_unpack.cpp -std=c++11 -isystem -L/Users/nastya/benchmark/build/src -lbenchmark -lpthread -o mybenchmark
+	rm -f ./mybenchmark
+	g++ bench.cpp matrixTransformG2.cpp matrixTransformG3.cpp matrixTransformG5.cpp  matrixTransformG2_unpack.cpp matrixTransformG3_SIMD.cpp -std=c++11 -O3 -isystem -L/Users/nastya/benchmark/build/src -lbenchmark -lpthread -o mybenchmark
 	./mybenchmark
 
 fclean: clean
