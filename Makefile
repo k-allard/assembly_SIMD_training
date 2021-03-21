@@ -13,7 +13,7 @@ OBJS = $(SRCS:.cpp=.o)
 OBJS_S = $(SRCS:.s=.o)
 
 FLAGS = 
-FLAGSB = -Ofast -fno-stack-protector -fno-exceptions -fno-rtti -mmmx -msse -msse2 -msse3 -mssse3 -mno-sse4.1 -mno-avx -fno-asynchronous-unwind-tables -std=c++11
+FLAGSB = -O3 -fno-stack-protector -fno-exceptions -fno-rtti -mmmx -msse -msse2 -msse3 -mssse3 -mno-sse4.1 -mno-avx -fno-asynchronous-unwind-tables -std=c++11
 
 all: $(NAME)
 
@@ -49,7 +49,7 @@ dddd:
 
 bench:
 	rm -f ./mybenchmark
-	g++ bench.cpp matrixTransformG2.cpp matrixTransformG3.cpp matrixTransformG5.cpp  matrixTransformG2_unpack.cpp matrixTransformG3_SIMD.cpp -std=c++11 -O3 -isystem -L/Users/nastya/benchmark/build/src -lbenchmark -lpthread -o mybenchmark
+	g++ bench.cpp matrixTransformG2.cpp matrixTransformG3.cpp matrixTransformG5.cpp  matrixTransformG2_unpack.cpp matrixTransformG3_SIMD.cpp $(FLAGSB) -isystem -L/Users/nastya/benchmark/build/src -lbenchmark -lpthread -o mybenchmark
 	./mybenchmark
 
 fclean: clean
