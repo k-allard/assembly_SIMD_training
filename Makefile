@@ -27,16 +27,9 @@ clean:
 
 generateASM:
 
-	g++ -S -masm=intel $(FLAGSB) -o newIdea/transformz_TEST.s newIdea/transform.cpp
+	g++ -S -masm=intel $(FLAGSB) -o matrixTransformG2_unpack.s matrixTransformG2_unpack.cpp
+	g++ -S -masm=intel $(FLAGSB) -o matrixTransformG3_SIMD.s matrixTransformG3_SIMD.cpp
 
-	g++ -S -masm=intel $(FLAGSB) -o newIdea/transform3.s newIdea/transform3.cpp
-	g++ -S -masm=intel $(FLAGSB) -o newIdea/transformz2.s newIdea/transformz2.cpp
-	g++ -S -masm=intel $(FLAGSB) -o newIdea/transformz3.s newIdea/transformz3.cpp
-	g++ -S -masm=intel $(FLAGSB) -o newIdea/transformz5.s newIdea/transformz5.cpp
-
-	g++ -S -masm=intel $(FLAGSB) -o matrixTransformG2.s matrixTransformG2.cpp
-	g++ -S -masm=intel $(FLAGSB) -o matrixTransformG3.s matrixTransformG3.cpp
-	g++ -S -masm=intel $(FLAGSB) -o matrixTransformG5.s matrixTransformG5.cpp
 
 dddd:
 	clang++ -O2 -S -mllvm --x86-asm-syntax=intel gFive.cpp
