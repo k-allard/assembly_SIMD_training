@@ -13,125 +13,50 @@ LCPI0_0:
 	.short	0                       ## 0x0
 	.short	0                       ## 0x0
 LCPI0_1:
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	0                       ## 0x0
-	.byte	1                       ## 0x1
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-LCPI0_2:
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	0                       ## 0x0
-	.byte	1                       ## 0x1
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-LCPI0_3:
 	.short	0                       ## 0x0
 	.short	0                       ## 0x0
 	.short	65535                   ## 0xffff
+	.short	0                       ## 0x0
+	.short	65535                   ## 0xffff
+	.short	0                       ## 0x0
+	.short	0                       ## 0x0
+	.short	0                       ## 0x0
+LCPI0_2:
+	.short	0                       ## 0x0
+	.short	0                       ## 0x0
+	.short	65535                   ## 0xffff
+	.short	0                       ## 0x0
+	.short	0                       ## 0x0
+	.short	0                       ## 0x0
+	.short	0                       ## 0x0
+	.short	0                       ## 0x0
+LCPI0_3:
+	.short	0                       ## 0x0
+	.short	0                       ## 0x0
+	.short	0                       ## 0x0
 	.short	0                       ## 0x0
 	.short	65535                   ## 0xffff
 	.short	0                       ## 0x0
 	.short	0                       ## 0x0
 	.short	0                       ## 0x0
 LCPI0_4:
-	.byte	4                       ## 0x4
-	.byte	5                       ## 0x5
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
+	.short	0                       ## 0x0
+	.short	0                       ## 0x0
+	.short	0                       ## 0x0
+	.short	0                       ## 0x0
+	.short	65535                   ## 0xffff
+	.short	0                       ## 0x0
+	.short	65535                   ## 0xffff
+	.short	0                       ## 0x0
 LCPI0_5:
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	8                       ## 0x8
-	.byte	9                       ## 0x9
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-LCPI0_6:
+	.short	0                       ## 0x0
+	.short	0                       ## 0x0
 	.short	0                       ## 0x0
 	.short	0                       ## 0x0
 	.short	0                       ## 0x0
 	.short	0                       ## 0x0
 	.short	65535                   ## 0xffff
 	.short	0                       ## 0x0
-	.short	65535                   ## 0xffff
-	.short	0                       ## 0x0
-LCPI0_7:
-	.byte	12                      ## 0xc
-	.byte	13                      ## 0xd
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-LCPI0_8:
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	12                      ## 0xc
-	.byte	13                      ## 0xd
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
-	.byte	255                     ## 0xff
 	.section	__TEXT,__text,regular,pure_instructions
 	.globl	__Z22matrixTransformG3_SIMDPiS_ii
 	.p2align	4, 0x90
@@ -147,7 +72,7 @@ __Z22matrixTransformG3_SIMDPiS_ii:      ## @_Z22matrixTransformG3_SIMDPiS_ii
 	jl	LBB0_6
 ## %bb.2:
 	movsxd	r9, edx
-	imul	rax, r9, 1431655766
+	imul	rax, r9, 0x55555556
 	mov	rdx, rax
 	shr	rdx, 63
 	shr	rax, 32
@@ -162,14 +87,12 @@ __Z22matrixTransformG3_SIMDPiS_ii:      ## @_Z22matrixTransformG3_SIMDPiS_ii
 	lea	rax, [rdi + 4*r11]
 	xor	r10d, r10d
 	movdqa	xmm8, xmmword ptr [rip + LCPI0_0] ## xmm8 = [65535,0,65535,0,0,0,0,0]
-	movdqa	xmm9, xmmword ptr [rip + LCPI0_1] ## xmm9 = [255,255,255,255,255,255,255,255,0,1,255,255,255,255,255,255]
-	movdqa	xmm10, xmmword ptr [rip + LCPI0_2] ## xmm10 = [255,255,255,255,255,255,255,255,255,255,255,255,0,1,255,255]
-	movdqa	xmm11, xmmword ptr [rip + LCPI0_3] ## xmm11 = [0,0,65535,0,65535,0,0,0]
-	movdqa	xmm12, xmmword ptr [rip + LCPI0_4] ## xmm12 = [4,5,255,255,255,255,255,255,255,255,255,255,255,255,255,255]
-	movdqa	xmm13, xmmword ptr [rip + LCPI0_5] ## xmm13 = [255,255,255,255,255,255,255,255,255,255,255,255,8,9,255,255]
-	movdqa	xmm14, xmmword ptr [rip + LCPI0_6] ## xmm14 = [0,0,0,0,65535,0,65535,0]
-	movdqa	xmm15, xmmword ptr [rip + LCPI0_7] ## xmm15 = [12,13,255,255,255,255,255,255,255,255,255,255,255,255,255,255]
-	movdqa	xmm0, xmmword ptr [rip + LCPI0_8] ## xmm0 = [255,255,255,255,12,13,255,255,255,255,255,255,255,255,255,255]
+	pxor	xmm1, xmm1
+	movdqa	xmm9, xmmword ptr [rip + LCPI0_1] ## xmm9 = [0,0,65535,0,65535,0,0,0]
+	movdqa	xmm10, xmmword ptr [rip + LCPI0_2] ## xmm10 = [0,0,65535,0,0,0,0,0]
+	movdqa	xmm11, xmmword ptr [rip + LCPI0_3] ## xmm11 = [0,0,0,0,65535,0,0,0]
+	movdqa	xmm12, xmmword ptr [rip + LCPI0_4] ## xmm12 = [0,0,0,0,65535,0,65535,0]
+	movdqa	xmm13, xmmword ptr [rip + LCPI0_5] ## xmm13 = [0,0,0,0,0,0,65535,0]
 	.p2align	4, 0x90
 LBB0_3:                                 ## =>This Loop Header: Depth=1
                                         ##     Child Loop BB0_4 Depth 2
@@ -178,35 +101,42 @@ LBB0_3:                                 ## =>This Loop Header: Depth=1
 	.p2align	4, 0x90
 LBB0_4:                                 ##   Parent Loop BB0_3 Depth=1
                                         ## =>  This Inner Loop Header: Depth=2
-	movdqa	xmm7, xmmword ptr [rdi + 4*rbx]
-	movdqa	xmm5, xmmword ptr [rax + 4*rbx]
-	movdqa	xmm6, xmmword ptr [rcx + 4*rbx]
-	movdqa	xmm4, xmm7
-	pand	xmm4, xmm8
-	movdqa	xmm2, xmm5
-	pshufb	xmm2, xmm9
-	por	xmm2, xmm4
-	movdqa	xmm4, xmm6
-	pshufb	xmm4, xmm10
-	por	xmm4, xmm2
-	pshufd	xmm2, xmm4, 120         ## xmm2 = xmm4[0,2,3,1]
-	movdqa	xmm4, xmm5
-	pand	xmm4, xmm11
+	movdqa	xmm6, xmmword ptr [rdi + 4*rbx]
+	movdqa	xmm4, xmmword ptr [rax + 4*rbx]
+	movdqa	xmm5, xmmword ptr [rcx + 4*rbx]
 	movdqa	xmm3, xmm6
-	pshufb	xmm3, xmm12
-	movdqa	xmm1, xmm7
-	pshufb	xmm1, xmm13
-	por	xmm1, xmm4
-	por	xmm1, xmm3
-	pshufd	xmm1, xmm1, 177         ## xmm1 = xmm1[1,0,3,2]
-	pand	xmm6, xmm14
-	pshufb	xmm7, xmm15
-	por	xmm7, xmm6
-	pshufb	xmm5, xmm0
-	por	xmm5, xmm7
-	pshufd	xmm3, xmm5, 210         ## xmm3 = xmm5[2,0,1,3]
-	movdqa	xmmword ptr [rdx - 32], xmm2
-	movdqa	xmmword ptr [rdx - 16], xmm1
+	pand	xmm3, xmm8
+	movdqa	xmm0, xmm4
+	punpcklwd	xmm0, xmm1      ## xmm0 = xmm0[0],xmm1[0],xmm0[1],xmm1[1],xmm0[2],xmm1[2],xmm0[3],xmm1[3]
+	punpckldq	xmm0, xmm1      ## xmm0 = xmm0[0],xmm1[0],xmm0[1],xmm1[1]
+	pslldq	xmm0, 8                 ## xmm0 = zero,zero,zero,zero,zero,zero,zero,zero,xmm0[0,1,2,3,4,5,6,7]
+	movdqa	xmm2, xmm5
+	punpcklwd	xmm2, xmm1      ## xmm2 = xmm2[0],xmm1[0],xmm2[1],xmm1[1],xmm2[2],xmm1[2],xmm2[3],xmm1[3]
+	pslldq	xmm2, 12                ## xmm2 = zero,zero,zero,zero,zero,zero,zero,zero,zero,zero,zero,zero,xmm2[0,1,2,3]
+	por	xmm2, xmm3
+	por	xmm2, xmm0
+	pshufd	xmm0, xmm2, 120         ## xmm0 = xmm2[0,2,3,1]
+	movdqa	xmm2, xmm4
+	pand	xmm2, xmm9
+	movdqa	xmm3, xmm5
+	pand	xmm3, xmm10
+	psrldq	xmm3, 4                 ## xmm3 = xmm3[4,5,6,7,8,9,10,11,12,13,14,15],zero,zero,zero,zero
+	movdqa	xmm7, xmm6
+	pand	xmm7, xmm11
+	pslldq	xmm7, 4                 ## xmm7 = zero,zero,zero,zero,xmm7[0,1,2,3,4,5,6,7,8,9,10,11]
+	por	xmm7, xmm2
+	por	xmm7, xmm3
+	pshufd	xmm2, xmm7, 177         ## xmm2 = xmm7[1,0,3,2]
+	pand	xmm5, xmm12
+	pand	xmm6, xmm13
+	psrldq	xmm6, 12                ## xmm6 = xmm6[12,13,14,15],zero,zero,zero,zero,zero,zero,zero,zero,zero,zero,zero,zero
+	por	xmm6, xmm5
+	pand	xmm4, xmm13
+	psrldq	xmm4, 8                 ## xmm4 = xmm4[8,9,10,11,12,13,14,15],zero,zero,zero,zero,zero,zero,zero,zero
+	por	xmm4, xmm6
+	pshufd	xmm3, xmm4, 210         ## xmm3 = xmm4[2,0,1,3]
+	movdqa	xmmword ptr [rdx - 32], xmm0
+	movdqa	xmmword ptr [rdx - 16], xmm2
 	movdqa	xmmword ptr [rdx], xmm3
 	add	rbx, 4
 	add	rdx, 48

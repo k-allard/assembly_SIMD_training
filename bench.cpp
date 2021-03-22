@@ -4,8 +4,7 @@
 // #include "newIdea/transform.h"
 
 #define L 240	//строки
-#define Q 16	//столбцы
-#define G 2		//кол-во блоков в столбце
+#define Q 40	//столбцы
 
 const size_t L_val = L;
 const size_t Q_val = Q;
@@ -18,6 +17,8 @@ void	matrixTransformG5(int matrix[], int matrixNew[], size_t L_val, size_t Q_val
 
 void	matrixTransformG2_unpack(int* matrix, int* matrixNew, int L_val, int Q_val);
 void	matrixTransformG3_SIMD(int* matrix, int* matrixNew, int L_val, int Q_val);
+void	matrixTransformG5_SIMD(int* matrix, int* matrixNew, int L_val, int Q_val);
+
 void transformz3(const uint32_t *psrc, uint32_t *pdst, size_t L_val, size_t Q_val) noexcept;
 void transformz4(const uint32_t *psrc, uint32_t *pdst, size_t L_val, size_t Q_val) noexcept;
 
@@ -64,14 +65,19 @@ static void BM_matrixTransformG2_withoutSIMD(benchmark::State& state) {
 
 
 
-static void BM_matrixTransformG2_unpack(benchmark::State& state) {
+static void BM_matrixTransformG2_SIMD(benchmark::State& state) {
   for (auto _ : state)
     matrixTransformG2_unpack((int *)matrix1D, (int *)matrixNew, L, Q);
 }
 
-static void BM_matrixTransformG3_my_SIMD(benchmark::State& state) {
+static void BM_matrixTransformG3_SIMD(benchmark::State& state) {
   for (auto _ : state)
     matrixTransformG3_SIMD((int *)matrix1D, (int *)matrixNew, L, Q);
+}
+
+static void BM_matrixTransformG5_SIMD(benchmark::State& state) {
+  for (auto _ : state)
+    matrixTransformG5_SIMD((int *)matrix1D, (int *)matrixNew, L, Q);
 }
 
 static void BM_matrixTransformG3_maskmovdqu(benchmark::State& state) {
@@ -84,13 +90,14 @@ static void BM_matrixTransformG3_pandPor(benchmark::State& state) {
     transformz4((const uint32_t *)matrix1D, (uint32_t *)matrixNew, L, Q);
 }
 
-BENCHMARK(BM_matrixTransformG5_withoutSIMD);
-BENCHMARK(BM_matrixTransformG3_withoutSIMD);
 BENCHMARK(BM_matrixTransformG2_withoutSIMD);
+BENCHMARK(BM_matrixTransformG3_withoutSIMD);
+BENCHMARK(BM_matrixTransformG5_withoutSIMD);
 
 
-BENCHMARK(BM_matrixTransformG2_unpack);
-BENCHMARK(BM_matrixTransformG3_my_SIMD);
+BENCHMARK(BM_matrixTransformG2_SIMD);
+BENCHMARK(BM_matrixTransformG3_SIMD);
+BENCHMARK(BM_matrixTransformG5_SIMD);
 BENCHMARK(BM_matrixTransformG3_maskmovdqu);
 BENCHMARK(BM_matrixTransformG3_pandPor);
 

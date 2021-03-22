@@ -9,12 +9,13 @@ void	matrixTransformG3_SIMD(int* matrix, int* matrixNew, int L, int Q)
 	int blockLength = L / G; 					
 
 	for (int q = 0; q < Q; q++) 
-    {					
+    {
 		for(int i = 0; i < blockLength; i += 4)
-        {	
-            __m128i x0 = ((__m128i*)(matrix + q*L + i ))[0];
-            __m128i x1 = ((__m128i*)(matrix + q*L + i + blockLength))[0];
-            __m128i x2 = ((__m128i*)(matrix + q*L + i + blockLength * 2))[0];
+        {
+            int* start = matrix + q*L + i;
+            __m128i x0 = ((__m128i*)(start ))[0];
+            __m128i x1 = ((__m128i*)(start + blockLength))[0];
+            __m128i x2 = ((__m128i*)(start + blockLength * 2))[0];
 
                                 // должны будут быть такими:
             __m128i x3;         // x3 = x0[0],x1[0],x2[0],x0[1]
@@ -80,9 +81,10 @@ void	matrixTransformG3_SIMD(int* matrix, int* matrixNew, int L, int Q)
             */
             x5 = _mm_shuffle_epi32(x5, _MM_SHUFFLE(3, 1, 0, 2));
 
-            ((__m128i*)(matrixNew + q*L + G*i))[0] = x3;        
-            ((__m128i*)(matrixNew + q*L + G*i))[1] = x4;
-            ((__m128i*)(matrixNew + q*L + G*i))[2] = x5;
+            __m128i *end = ((__m128i*)(matrixNew + q*L + G*i));
+            end[0] = x3;        
+            end[1] = x4;
+            end[2] = x5;
 		}
     }
 }
