@@ -1,16 +1,19 @@
 #include "header.h"
+void transformz3(const uint32_t *psrc, uint32_t *pdst, size_t L_val, size_t Q_val) noexcept;
+void transformz4(const uint32_t *psrc, uint32_t *pdst, size_t L_val, size_t Q_val) noexcept;
+void	matrixTransformG5_SIMD(int* matrix, int* matrixNew, int L, int Q);
 
 int main()
 {
-	int L = 24;	//строки
-	int Q = 3;	//столбцы
-	int G = 3;		//кол-во блоков в столбце
+	int L = 40;	//строки
+	int Q = 2;	//столбцы
+	int G = 5;		//кол-во блоков в столбце
 
 	printf("\n-.-.-.-.-.-.-.-.-.-.-\n");
 	printf("   Initial matrix                  ");
 	printf("\n-.-.-.-.-.-.-.-.-.-.-\n");
-	int matrix2D[L][Q];
-	int matrixNew[L * Q];
+	int matrix2D[L][Q] __attribute__ ((aligned (16)));
+	int matrixNew[L * Q] __attribute__ ((aligned (16)));
 
 	int index = 0;
 	for (int i = 0; i < L; i++) {
@@ -23,7 +26,7 @@ int main()
     }
     printf("\n");
 
-	int matrix1D[L * Q];
+	int matrix1D[L * Q] __attribute__ ((aligned (16)));
 
 	int k = -1;
     for (int j = 0; j < Q; j++)
@@ -66,10 +69,10 @@ int main()
 		matrixTransformG2_unpack((int*)matrix1D, (int*)matrixNew, L, Q);
 		break;
 	case 3:
-		matrixTransformG3_SIMD((int*)matrix1D, (int*)matrixNew, L, Q);
+		transformz4((const uint32_t *)matrix1D, (uint32_t *)matrixNew, L, Q);
 		break;
 	case 5:
-		matrixTransformG5(matrix1D, matrixNew, L, Q);
+		matrixTransformG5_SIMD(matrix1D, matrixNew, L, Q);
 		break;
 	default:
 	    printf("ERROR: G can be 2, 3 or 5\n");
