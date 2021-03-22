@@ -3,3 +3,5 @@ testProject
 ./*.o
 mybenchmark
 ./mybenchmark
+test.cpp
+test.s

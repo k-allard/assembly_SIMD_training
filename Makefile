@@ -6,20 +6,25 @@ SRCS_S =	matrixTransformG2.cpp \
 			matrixTransformG3.cpp \
 			matrixTransformG5.cpp \
 			matrixTransformG2_unpack.cpp \
-			matrixTransformG3_SIMD.cpp
+			matrixTransformG3_SIMD.cpp \
+			matrixTransformG3_MASKMOV.s \
+			matrixTransformG3_MASKMOV_2.s \
+			matrixTransformG5_SIMD.cpp
+
+
 
 OBJS = $(SRCS:.cpp=.o)
 
 OBJS_S = $(SRCS:.s=.o)
 
-FLAGS = 
+FLAGS = -fno-stack-protector -fno-exceptions -fno-rtti -mmmx -msse -msse2 -msse3 -mssse3 -mno-sse4.1 -std=c++11
 FLAGSB = -O3 -fno-stack-protector -fno-exceptions -fno-rtti -mmmx -msse -msse2 -msse3 -mssse3 -mno-sse4.1 -mno-avx -fno-asynchronous-unwind-tables -std=c++11
 
 all: $(NAME)
 
 $(NAME):
 	@echo "\x1b[33m Preparing $(NAME)...\x1b[0m"
-	g++ -o $(NAME) $(SRCS) $(SRCS_S)
+	g++ -o $(NAME) $(SRCS) $(SRCS_S) $(FLAGS)
 	@echo "\x1b[32m $(NAME) is ready!\x1b[0m"
 
 clean:
@@ -29,6 +34,9 @@ generateASM:
 
 	g++ -S -masm=intel $(FLAGSB) -o matrixTransformG2_unpack.s matrixTransformG2_unpack.cpp
 	g++ -S -masm=intel $(FLAGSB) -o matrixTransformG3_SIMD.s matrixTransformG3_SIMD.cpp
+
+generateASM2:
+	g++ -S -masm=intel $(FLAGSB) -o matrixTransformG5_SIMD.s matrixTransformG3_SIMD.cpp
 
 
 dddd:
@@ -42,7 +50,7 @@ dddd:
 
 bench:
 	rm -f ./mybenchmark
-	g++ bench.cpp matrixTransformG2.cpp matrixTransformG3.cpp matrixTransformG5.cpp  matrixTransformG2_unpack.cpp matrixTransformG3_SIMD.cpp $(FLAGSB) -isystem -L/Users/nastya/benchmark/build/src -lbenchmark -lpthread -o mybenchmark
+	g++ bench.cpp matrixTransformG2.cpp matrixTransformG3.cpp matrixTransformG5.cpp  matrixTransformG2_unpack.s matrixTransformG3_SIMD.s matrixTransformG3_MASKMOV.s matrixTransformG3_MASKMOV_2.s matrixTransformG5_SIMD.cpp $(FLAGSB) -isystem -L/Users/nastya/benchmark/build/src -lbenchmark -lpthread -o mybenchmark
 	./mybenchmark
 
 fclean: clean
