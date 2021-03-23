@@ -5,9 +5,9 @@ void	matrixTransformG5_SIMD(int* matrix, int* matrixNew, int L, int Q);
 
 int main()
 {
-	int L = 24;	//строки
+	int L = 40;	//строки
 	int Q = 2;	//столбцы
-	int G = 3;		//кол-во блоков в столбце
+	int G = 5;		//кол-во блоков в столбце
 
 	printf("\n-.-.-.-.-.-.-.-.-.-.-\n");
 	printf("   Initial matrix                  ");
