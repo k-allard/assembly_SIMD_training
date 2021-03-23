@@ -1,5 +1,5 @@
 	.section	__TEXT,__text,regular,pure_instructions
-	.build_version macos, 10, 15	sdk_version 10, 15, 4
+#	.build_version macos, 10, 15	sdk_version 10, 15, 4
 	.intel_syntax noprefix
 	.globl	__Z24matrixTransformG2_unpackPiS_ii ## -- Begin function _Z24matrixTransformG2_unpackPiS_ii
 	.p2align	4, 0x90
@@ -109,4 +109,4 @@ LBB0_9:
 	ret
                                         ## -- End function
 
-.subsections_via_symbols
+# .subsections_via_symbols

@@ -1,5 +1,5 @@
 	.section	__TEXT,__text,regular,pure_instructions
-	.build_version macos, 10, 15	sdk_version 10, 15, 4
+#	.build_version macos, 10, 15	sdk_version 10, 15, 4
 	.intel_syntax noprefix
 	.globl	__Z11transformz4PKjPjmm ## -- Begin function _Z11transformz3PKjPjmm
 	.p2align	4, 0x90
