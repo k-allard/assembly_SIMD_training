@@ -1,5 +1,5 @@
 	.section	__TEXT,__text,regular,pure_instructions
-	.build_version macos, 10, 15	sdk_version 10, 15, 4
+#	.build_version macos, 10, 15	sdk_version 10, 15, 4
 	.intel_syntax noprefix
 	.globl	__Z17matrixTransformG3PiS_mm ## -- Begin function _Z17matrixTransformG3PiS_mm
 	.p2align	4, 0x90
@@ -208,4 +208,4 @@ LBB0_18:
 	ret
                                         ## -- End function
 
-.subsections_via_symbols
+# .subsections_via_symbols
