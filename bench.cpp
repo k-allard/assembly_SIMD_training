@@ -90,15 +90,15 @@ static void BM_matrixTransformG3_pandPor(benchmark::State& state) {
     transformz4((const uint32_t *)matrix1D, (uint32_t *)matrixNew, L, Q);
 }
 
-BENCHMARK(BM_matrixTransformG2_withoutSIMD);
-BENCHMARK(BM_matrixTransformG3_withoutSIMD);
+// BENCHMARK(BM_matrixTransformG2_withoutSIMD);
+// BENCHMARK(BM_matrixTransformG3_withoutSIMD);
 BENCHMARK(BM_matrixTransformG5_withoutSIMD);
 
 
-BENCHMARK(BM_matrixTransformG2_SIMD);
-BENCHMARK(BM_matrixTransformG3_SIMD);
+// BENCHMARK(BM_matrixTransformG2_SIMD);
+// BENCHMARK(BM_matrixTransformG3_SIMD);
 BENCHMARK(BM_matrixTransformG5_SIMD);
-BENCHMARK(BM_matrixTransformG3_maskmovdqu);
-BENCHMARK(BM_matrixTransformG3_pandPor);
+// BENCHMARK(BM_matrixTransformG3_maskmovdqu);
+// BENCHMARK(BM_matrixTransformG3_pandPor);
 
 BENCHMARK_MAIN();

@@ -50,7 +50,7 @@ dddd:
 
 bench:
 	rm -f ./mybenchmark
-	g++ bench.cpp matrixTransformG2.cpp matrixTransformG3.cpp matrixTransformG5.cpp  matrixTransformG2_unpack.s matrixTransformG3_SIMD.s matrixTransformG3_MASKMOV.s matrixTransformG3_MASKMOV_2.s matrixTransformG5_SIMD.cpp $(FLAGSB) -isystem -L/Users/nastya/benchmark/build/src -lbenchmark -lpthread -o mybenchmark
+	g++ bench.cpp matrixTransformG2.cpp matrixTransformG3.cpp matrixTransformG5.cpp  matrixTransformG2_unpack.s matrixTransformG3_SIMD.s matrixTransformG3_MASKMOV.s matrixTransformG3_MASKMOV_2.s matrixTransformG5_SIMD.s $(FLAGSB) -isystem -L/Users/nastya/benchmark/build/src -lbenchmark -lpthread -o mybenchmark
 	./mybenchmark
 
 fclean: clean
