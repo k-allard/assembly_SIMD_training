@@ -1,8 +1,8 @@
 	.section	__TEXT,__text,regular,pure_instructions
-	.build_version macos, 10, 15	sdk_version 10, 15, 4
+#	.build_version macos, 10, 15	sdk_version 10, 15, 4
 	.intel_syntax noprefix
 	.section	__TEXT,__literal16,16byte_literals
-	.p2align	4               ## -- Begin function _Z22matrixTransformG5_SIMDPiS_ii
+	.p2align	4           
 LCPI0_0:
 	.short	0                       ## 0x0
 	.short	0                       ## 0x0
