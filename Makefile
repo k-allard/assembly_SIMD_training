@@ -53,6 +53,11 @@ bench:
 	g++ bench.cpp matrixTransformG2.cpp matrixTransformG3.cpp matrixTransformG5.cpp  matrixTransformG2_unpack.s matrixTransformG3_SIMD.s matrixTransformG3_MASKMOV.s matrixTransformG3_MASKMOV_2.s matrixTransformG5_SIMD.s $(FLAGSB) -isystem -L/Users/nastya/benchmark/build/src -lbenchmark -lpthread -o mybenchmark
 	./mybenchmark
 
+bench2:
+	rm -f ./bench_ticks
+	g++ bench_ticks.cpp matrixTransformG2_unpack.cpp matrixTransformG3_SIMD.cpp matrixTransformG5_SIMD.cpp $(FLAGSB) -o ./bench_ticks
+	./bench_ticks
+
 fclean: clean
 	rm -rf $(NAME)
 

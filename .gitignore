@@ -5,3 +5,6 @@ mybenchmark
 ./mybenchmark
 test.cpp
 test.s
+bench_ticks
+./bench_ticks
+.vscode/
