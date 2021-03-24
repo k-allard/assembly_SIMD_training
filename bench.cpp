@@ -15,7 +15,7 @@ void	matrixTransformG2(int matrix[], int matrixNew[], size_t L_val, size_t Q_val
 void	matrixTransformG3(int matrix[], int matrixNew[], size_t L_val, size_t Q_val);
 void	matrixTransformG5(int matrix[], int matrixNew[], size_t L_val, size_t Q_val); 
 
-void	matrixTransformG2_unpack(int* matrix, int* matrixNew, int L_val, int Q_val);
+void	matrixTransformG2_SIMD(int* matrix, int* matrixNew, int L_val, int Q_val);
 void	matrixTransformG3_SIMD(int* matrix, int* matrixNew, int L_val, int Q_val);
 void	matrixTransformG5_SIMD(int* matrix, int* matrixNew, int L_val, int Q_val);
 
@@ -67,7 +67,7 @@ static void BM_matrixTransformG2_withoutSIMD(benchmark::State& state) {
 
 static void BM_matrixTransformG2_SIMD(benchmark::State& state) {
   for (auto _ : state)
-    matrixTransformG2_unpack((int *)matrix1D, (int *)matrixNew, L, Q);
+    matrixTransformG2_SIMD((int *)matrix1D, (int *)matrixNew, L, Q);
 }
 
 static void BM_matrixTransformG3_SIMD(benchmark::State& state) {
@@ -90,9 +90,9 @@ static void BM_matrixTransformG3_pandPor(benchmark::State& state) {
     transformz4((const uint32_t *)matrix1D, (uint32_t *)matrixNew, L, Q);
 }
 
-// BENCHMARK(BM_matrixTransformG2_withoutSIMD);
-// BENCHMARK(BM_matrixTransformG3_withoutSIMD);
-// BENCHMARK(BM_matrixTransformG5_withoutSIMD);
+ BENCHMARK(BM_matrixTransformG2_withoutSIMD);
+ BENCHMARK(BM_matrixTransformG3_withoutSIMD);
+ BENCHMARK(BM_matrixTransformG5_withoutSIMD);
 
 
 BENCHMARK(BM_matrixTransformG2_SIMD);

@@ -18,7 +18,7 @@ OBJS = $(SRCS:.cpp=.o)
 OBJS_S = $(SRCS:.s=.o)
 
 FLAGS = -fno-stack-protector -fno-exceptions -fno-rtti -mmmx -msse -msse2 -msse3 -mno-ssse3 -mno-sse4.1 -std=c++11
-FLAGSB = -O3 -fno-stack-protector -fno-exceptions -fno-rtti -mmmx -msse -msse2 -msse3 -mno-ssse3 -mno-sse4.1 -mno-avx -fno-asynchronous-unwind-tables -fno-tree-vectorize  -fno-unroll-loops -std=c++11
+FLAGSB = -fno-stack-protector -fno-exceptions -fno-rtti -mmmx -msse -msse2 -msse3 -mno-ssse3 -mno-sse4.1 -mno-avx -fno-asynchronous-unwind-tables -fno-tree-vectorize  -fno-unroll-loops -std=c++11
 
 all: $(NAME)
 
@@ -55,12 +55,12 @@ dddd:
 
 bench:
 	rm -f ./mybenchmark
-	g++ bench.cpp matrixTransformG2.cpp matrixTransformG3.cpp matrixTransformG5.cpp  matrixTransformG2_unpack.s matrixTransformG3_SIMD.s matrixTransformG3_MASKMOV.s matrixTransformG3_MASKMOV_2.s matrixTransformG5_SIMD.s $(FLAGSB) -isystem -L/Users/nastya/benchmark/build/src -lbenchmark -lpthread -o mybenchmark
+	g++ bench.cpp matrixTransformG2.cpp matrixTransformG3.cpp matrixTransformG5.cpp  matrixTransformG2_SIMD.asm matrixTransformG3_SIMD.asm matrixTransformG3_MASKMOV.s matrixTransformG3_MASKMOV_2.s matrixTransformG5_SIMD.asm $(FLAGSB) -isystem -L/Users/nastya/benchmark/build/src -lbenchmark -lpthread -o mybenchmark
 	./mybenchmark
 
 bench2:
 	rm -f ./bench_ticks
-	g++ bench_ticks.cpp matrixTransformG2_SIMD.s matrixTransformG3_SIMD.s matrixTransformG5_SIMD.s -o ./bench_ticks
+	g++ bench_ticks.cpp matrixTransformG2_SIMD.asm matrixTransformG3_SIMD.asm matrixTransformG5_SIMD.asm -o ./bench_ticks
 	./bench_ticks
 
 fclean: clean
