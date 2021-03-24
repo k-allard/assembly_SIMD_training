@@ -9,7 +9,7 @@ SRCS_S =	matrixTransformG2.cpp \
 			matrixTransformG3_SIMD.cpp \
 			matrixTransformG3_MASKMOV.s \
 			matrixTransformG3_MASKMOV_2.s \
-			matrixTransformG5_SIMD.s
+			matrixTransformG5_SIMD.asm
 
 
 
@@ -18,7 +18,7 @@ OBJS = $(SRCS:.cpp=.o)
 OBJS_S = $(SRCS:.s=.o)
 
 FLAGS = -fno-stack-protector -fno-exceptions -fno-rtti -mmmx -msse -msse2 -msse3 -mno-ssse3 -mno-sse4.1 -std=c++11
-FLAGSB = -O3 -fno-stack-protector -fno-exceptions -fno-rtti -mmmx -msse -msse2 -msse3 -mno-ssse3 -mno-sse4.1 -mno-avx -fno-asynchronous-unwind-tables -std=c++11
+FLAGSB = -O3 -fno-stack-protector -fno-exceptions -fno-rtti -mmmx -msse -msse2 -msse3 -mno-ssse3 -mno-sse4.1 -mno-avx -fno-asynchronous-unwind-tables -fno-tree-vectorize  -fno-unroll-loops -std=c++11
 
 all: $(NAME)
 
@@ -36,9 +36,10 @@ generateASM:
 	g++ -S -masm=intel $(FLAGSB) -o matrixTransformG3_SIMD.s matrixTransformG3_SIMD.cpp
 
 generateASM2:
-	g++ -S -masm=intel $(FLAGSB) -o matrixTransformG5_SIMD.s matrixTransformG5_SIMD.cpp
+	g++ -S -masm=intel $(FLAGSB) -o matrixTransformG3_SIMD.s matrixTransformG3_SIMD.cpp
 
-
+generateASM3:
+	g++ -S -masm=intel $(FLAGSB) -o matrixTransformG5_SIMD.asm matrixTransformG5_SIMD.cpp
 dddd:
 	clang++ -O2 -S -mllvm --x86-asm-syntax=intel gFive.cpp
 	clang++ -O2 -S -mllvm --x86-asm-syntax=intel gThree.cpp
@@ -55,7 +56,7 @@ bench:
 
 bench2:
 	rm -f ./bench_ticks
-	g++ bench_ticks.cpp matrixTransformG2_unpack.cpp matrixTransformG3_SIMD.cpp matrixTransformG5_SIMD.cpp $(FLAGSB) -o ./bench_ticks
+	g++ bench_ticks.cpp matrixTransformG2_unpack.s matrixTransformG3_SIMD.s matrixTransformG5_SIMD.s -o ./bench_ticks
 	./bench_ticks
 
 fclean: clean

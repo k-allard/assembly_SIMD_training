@@ -69,7 +69,7 @@ int main()
 		matrixTransformG2_unpack((int*)matrix1D, (int*)matrixNew, L, Q);
 		break;
 	case 3:
-		transformz4((const uint32_t *)matrix1D, (uint32_t *)matrixNew, L, Q);
+		matrixTransformG3_SIMD((int *)matrix1D, (int *)matrixNew, L, Q);
 		break;
 	case 5:
 		matrixTransformG5_SIMD(matrix1D, matrixNew, L, Q);

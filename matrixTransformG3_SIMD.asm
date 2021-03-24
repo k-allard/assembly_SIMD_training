@@ -57,6 +57,23 @@ LCPI0_5:
 	.short	0                       ## 0x0
 	.short	65535                   ## 0xffff
 	.short	0                       ## 0x0
+x3_mask:					## _mm_set_epi32(0, 0, 0xffffffff, 0xffffffff)
+	.long	0xffffffff
+	.long	0xffffffff
+	.long	0
+	.long	0
+fromx1_mask:				## _mm_set_epi32(0, 0, 0, 0xffffffff)
+	.long	0xffffffff
+	.long	0
+	.long	0
+	.long	0
+x4_mask:					## _mm_set_epi32(0, 0xffffffff, 0xffffffff, 0)
+	.long	0
+	.long	0xffffffff
+	.long	0
+	.long	0
+
+
 	.section	__TEXT,__text,regular,pure_instructions
 	.globl	__Z22matrixTransformG3_SIMD_manualPiS_ii
 	.p2align	4, 0x90
@@ -82,28 +99,28 @@ __Z29matrixTransformG3_SIMDP_manualiS_ii:      ## @_Z29matrixTransformG3_SIMD_ma
 	mov r8,rcx		# save Q
 	mov r9, rdx	# save L
 	# blockLength = L / 3 = r8 / 8
-	mov rax, r9	
-	xor rdx,rdx
+	mov rax, r9	# rax = L
+	xor rdx,rdx	
 	mov rcx, 3
-	div rcx
-	mov r15, eax
+	div rcx	
+	mov r15, eax # blockLength = r15
 
 	xor r10,r10		# q = 0
 LOOP_q_r10_0_r8:	
 	xor r11,r11		# i = 0
 
-	mov r12,r10
-	mul r12,r9 	# q*L
+	mov r12,r10	# "q*L" = q
+	mul r12,r9 	# "q*L" = q*L
 LOOP_i_r11_0_r15:
 	
-	mov r13,r12
+	mov r13,r12		# start = q*L
 	add r13,r11		# start = q*L + i
 
-	movdqa	xmm1, xmmword ptr [rdi + r13]
-	add r13,r15
-	movdqa	xmm2, xmmword ptr [rdi + r13]
-	add r13,r15
-	movdqa	xmm3, xmmword ptr [rdi + r13]
+	movdqa	xmm0, xmmword ptr [rdi + 4*r13] # matrix[q*L + i]
+	add r13,r15	# start = q*L + i + blockLength
+	movdqa	xmm1, xmmword ptr [rdi + 4*r13] # matrix[q*L + i + blockLength]
+	add r13,r15 # start = q*L + i + blockLength + blockLength
+	movdqa	xmm2, xmmword ptr [rdi + 4*r13] # matrix[q*L + i + blockLength*2]
 
 	
 

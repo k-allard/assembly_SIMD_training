@@ -1,7 +1,6 @@
-	.section	__TEXT,__text,regular,pure_instructions
-#	.build_version macos, 10, 15	sdk_version 10, 15, 4
+.text
 	.intel_syntax noprefix
-	.section	__TEXT,__literal16,16byte_literals
+.literal16
 	.p2align	4           
 LCPI0_0:
 	.short	0                       ## 0x0
@@ -30,7 +29,7 @@ LCPI0_2:
 	.short	0                       ## 0x0
 	.short	65535                   ## 0xffff
 	.short	0                       ## 0x0
-	.section	__TEXT,__text,regular,pure_instructions
+.text
 	.globl	__Z22matrixTransformG5_SIMDPiS_ii
 	.p2align	4, 0x90
 __Z22matrixTransformG5_SIMDPiS_ii:      
@@ -46,8 +45,7 @@ __Z22matrixTransformG5_SIMDPiS_ii:
 	mov	rdx, rax
 	shr	rdx, 63
 	sar	rax, 33
-	add	eax, edx					# eax = blockLength ???
-
+	add	eax, edx					# eax = blockLength = L / 5
 
 	lea	edx, [rax + rax]
 	movsxd	r10, eax
@@ -66,7 +64,7 @@ __Z22matrixTransformG5_SIMDPiS_ii:
 	xor	r14d, r14d
 	pxor	xmm8, xmm8			# занулили
 	mov	eax, 0xffff
-	movd	xmm12, eax
+	movd	xmm12, eax			# movd - Move Doubleword
 	movdqa	xmm9, xmmword ptr [rip + LCPI0_0] 		# xmm9 = [0,0,0xFFFF,0,0,0,0,0]
 	movdqa	xmm10, xmmword ptr [rip + LCPI0_1] 		# xmm10 = [0,0,0,0,0xFFFF,0,0,0]
 	movdqa	xmm11, xmmword ptr [rip + LCPI0_2] 		# xmm11 = [0,0,0,0,0,0,0xFFFF,0]
@@ -156,7 +154,7 @@ LBB0_3:
 		por	xmm1, xmm4
 		movdqa	xmmword ptr [rbx], xmm1			# записали 5ый регистр в newMatrix
 		add	rax, 4								# i += 4
-		add	rbx, 80								# сдвинули указатель на newMatrix
+		add	rbx, 80								# сдвинули указатель на newMatrix на G*i int-ов
 	cmp	rax, r10							
 	jl	LBB0_4								
 # конец цикла for(int i = 0; i < blockLength; i += 4)
@@ -179,5 +177,3 @@ LBB0_6:
 	pop	r15
 	pop	rbp
 	ret
-
-.subsections_via_symbols
