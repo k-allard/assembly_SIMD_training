@@ -84,61 +84,64 @@ LOOP_ROWS:
 
 		movdqa	xmm7, xmm2
 		pand	xmm7, xmm9
-		pslldq	xmm7, 8                 # xmm7 = 0,0,0,0,0,0,0,0,xmm7[0,1,2,3,4,5,6,7]
+		pslldq	xmm7, 8                 
 		movdqa	xmm5, xmm1
 		andps	xmm5, xmm9
-		pslldq	xmm5, 4                 # xmm5 = 0,0,0,0,xmm5[0,1,2,3,4,5,6,7,8,9,10,11]
+		pslldq	xmm5, 4                 
 		por	xmm5, xmm7
 		movdqa	xmm7, xmm0
 		andps	xmm7, xmm9
 		xorps	xmm6, xmm6
-		movss	xmm6, xmm4              # xmm6 = xmm4[0],xmm6[1,2,3]
+		movss	xmm6, xmm4            
 		orps	xmm6, xmm7
 		orps	xmm6, xmm5
 		movdqa	xmmword ptr [rbx - 48], xmm6
+
 		movdqa	xmm7, xmm1
-		movsd	xmm7, xmm8              # xmm7 = xmm8[0],xmm7[1]
-		pslldq	xmm7, 4                 # xmm7 = 0,0,0,0,xmm7[0,1,2,3,4,5,6,7,8,9,10,11]
+		movsd	xmm7, xmm8              
+		pslldq	xmm7, 4                 
 		movdqa	xmm5, xmm0
 		andps	xmm5, xmm10
 		movdqa	xmm6, xmm4
 		andps	xmm6, xmm9
 		orps	xmm6, xmm5
 		orps	xmm6, xmm7
-		movq	xmm7, xmm3              # xmm7 = xmm3[0],0
-		psrldq	xmm7, 4                 # xmm7 = xmm7[4,5,6,7,8,9,10,11,12,13,14,15],0,0,0,0
+		movq	xmm7, xmm3              
+		psrldq	xmm7, 4                 
 		por	xmm7, xmm6
 		movdqa	xmmword ptr [rbx - 32], xmm7
+
 		andps	xmm0, xmm11
 		movdqa	xmm7, xmm4
 		andps	xmm7, xmm10
 		orps	xmm7, xmm0
 		movdqa	xmm0, xmm3
 		pand	xmm0, xmm10
-		psrldq	xmm0, 4                 # xmm0 = xmm0[4,5,6,7,8,9,10,11,12,13,14,15],0,0,0,0
+		psrldq	xmm0, 4                
 		movdqa	xmm5, xmm2
 		pand	xmm5, xmm10
-		psrldq	xmm5, 8                 # xmm5 = xmm5[8,9,10,11,12,13,14,15],0,0,0,0,0,0,0,0
+		psrldq	xmm5, 8                
 		por	xmm5, xmm7
 		por	xmm5, xmm0
 		movdqa	xmmword ptr [rbx - 16], xmm5
+
 		andps	xmm4, xmm11
 		pand	xmm3, xmm11
-		psrldq	xmm3, 4                 # xmm3 = xmm3[4,5,6,7,8,9,10,11,12,13,14,15],0,0,0,0
+		psrldq	xmm3, 4                
 		pand	xmm2, xmm11
-		psrldq	xmm2, 8                 # xmm2 = xmm2[8,9,10,11,12,13,14,15],0,0,0,0,0,0,0,0
-		psrldq	xmm1, 12                # xmm1 = xmm1[12,13,14,15],0,0,0,0,0,0,0,0,0,0,0,0
+		psrldq	xmm2, 8                 
+		psrldq	xmm1, 12               
 		por	xmm1, xmm4
 		por	xmm1, xmm2
 		por	xmm1, xmm3
 		movdqa	xmmword ptr [rbx], xmm1
+
 		add	rax, 4						# i += 4
-		add	rbx, 80						# newMatrix += G*i
+		add	rbx, 80						# newMatrix += G*i или newMatrix += 5*4*sizeof(int)
 		cmp	rax, r10
 		jl	LOOP_BLOCKS
 # конец цикла for(int i = 0; i < blockLength; i += 4)
 
-## %bb.5:         
 	inc	r14
 	add	rsi, r9
 	add	r11, r9

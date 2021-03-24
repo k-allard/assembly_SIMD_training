@@ -6,7 +6,7 @@ SRCS_S =	matrixTransformG2.cpp \
 			matrixTransformG3.cpp \
 			matrixTransformG5.cpp \
 			matrixTransformG2_unpack.cpp \
-			matrixTransformG3_SIMD.cpp \
+			matrixTransformG3_SIMD.s \
 			matrixTransformG3_MASKMOV.s \
 			matrixTransformG3_MASKMOV_2.s \
 			matrixTransformG5_SIMD.asm
