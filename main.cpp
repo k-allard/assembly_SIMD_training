@@ -1,12 +1,11 @@
 #include "header.h"
 void transformz3(const uint32_t *psrc, uint32_t *pdst, size_t L_val, size_t Q_val) noexcept;
 void transformz4(const uint32_t *psrc, uint32_t *pdst, size_t L_val, size_t Q_val) noexcept;
-void	matrixTransformG5_SIMD(int* matrix, int* matrixNew, int L, int Q);
 
 int main()
 {
 	int L = 24;	//строки
-	int Q = 2;	//столбцы
+	int Q = 3;	//столбцы
 	int G = 3;		//кол-во блоков в столбце
 
 	printf("\n-.-.-.-.-.-.-.-.-.-.-\n");
@@ -66,7 +65,7 @@ int main()
 	switch (G)
 	{
 	case 2:
-		matrixTransformG2_unpack((int*)matrix1D, (int*)matrixNew, L, Q);
+		matrixTransformG2_SIMD((int*)matrix1D, (int*)matrixNew, L, Q);
 		break;
 	case 3:
 		matrixTransformG3_SIMD((int *)matrix1D, (int *)matrixNew, L, Q);

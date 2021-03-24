@@ -9,7 +9,7 @@ unsigned long rtdsc()
 
 void	matrixTransformG5_SIMD(int* matrix, int* matrixNew, int L, int Q);
 void	matrixTransformG3_SIMD(int* matrix, int* matrixNew, int L, int Q);
-void	matrixTransformG2_unpack(int* matrix, int* matrixNew, int L, int Q);
+void	matrixTransformG2_SIMD(int* matrix, int* matrixNew, int L, int Q);
 int main()
 {
 	int L = 240;	//строки
@@ -24,7 +24,7 @@ int main()
     {
         matrixTransformG5_SIMD(matrix, matrixNew, L, Q);
         matrixTransformG3_SIMD(matrix, matrixNew, L, Q);
-        matrixTransformG2_unpack(matrix, matrixNew, L, Q);
+        matrixTransformG2_SIMD(matrix, matrixNew, L, Q);
     }
 
     printf("%s\t%s\t%s\t%s\n", "NAME", "ITEMS", "TICKS", "TICKS_PER_ITEMS");
@@ -36,10 +36,10 @@ int main()
         start = rtdsc();
         for(int i = 0; i < iteration; i++)
         {
-            matrixTransformG2_unpack(matrix, matrixNew, L, q);
+            matrixTransformG2_SIMD(matrix, matrixNew, L, q);
         }
         tiks = rtdsc() - start;
-        printf("%s\t%d\t%ld\t%f\n", "matrixTransformG2_unpack", L*q, tiks/iteration, 1.0*(tiks/iteration)/(L*q));
+        printf("%s\t%d\t%ld\t%f\n", "matrixTransformG2_SIMD", L*q, tiks/iteration, 1.0*(tiks/iteration)/(L*q));
 
         start = rtdsc();
         for(int i = 0; i < iteration; i++)

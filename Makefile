@@ -5,8 +5,8 @@ SRCS =		main.cpp
 SRCS_S =	matrixTransformG2.cpp \
 			matrixTransformG3.cpp \
 			matrixTransformG5.cpp \
-			matrixTransformG2_unpack.cpp \
-			matrixTransformG3_SIMD.s \
+			matrixTransformG2_SIMD.asm \
+			matrixTransformG3_SIMD.asm \
 			matrixTransformG3_MASKMOV.s \
 			matrixTransformG3_MASKMOV_2.s \
 			matrixTransformG5_SIMD.asm
@@ -35,10 +35,14 @@ generateASM:
 	g++ -S -masm=intel $(FLAGSB) -o matrixTransformG2_unpack.s matrixTransformG2_unpack.cpp
 	g++ -S -masm=intel $(FLAGSB) -o matrixTransformG3_SIMD.s matrixTransformG3_SIMD.cpp
 
+
 generateASM2:
-	g++ -S -masm=intel $(FLAGSB) -o matrixTransformG3_SIMD.s matrixTransformG3_SIMD.cpp
+	g++ -S -masm=intel $(FLAGSB) -o matrixTransformG2_SIMD.asm matrixTransformG2_SIMD.cpp
 
 generateASM3:
+	g++ -S -masm=intel $(FLAGSB) -o matrixTransformG3_SIMD.s matrixTransformG3_SIMD.cpp
+
+generateASM5:
 	g++ -S -masm=intel $(FLAGSB) -o matrixTransformG5_SIMD.asm matrixTransformG5_SIMD.cpp
 dddd:
 	clang++ -O2 -S -mllvm --x86-asm-syntax=intel gFive.cpp
@@ -56,7 +60,7 @@ bench:
 
 bench2:
 	rm -f ./bench_ticks
-	g++ bench_ticks.cpp matrixTransformG2_unpack.s matrixTransformG3_SIMD.s matrixTransformG5_SIMD.s -o ./bench_ticks
+	g++ bench_ticks.cpp matrixTransformG2_SIMD.s matrixTransformG3_SIMD.s matrixTransformG5_SIMD.s -o ./bench_ticks
 	./bench_ticks
 
 fclean: clean

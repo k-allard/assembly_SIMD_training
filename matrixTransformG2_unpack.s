@@ -1,10 +1,9 @@
-	.section	__TEXT,__text,regular,pure_instructions
-#	.build_version macos, 10, 15	sdk_version 10, 15, 4
+.text
 	.intel_syntax noprefix
-	.globl	__Z24matrixTransformG2_unpackPiS_ii ## -- Begin function _Z24matrixTransformG2_unpackPiS_ii
+	.globl	__Z24matrixTransformG2_unpackPiS_ii 
 	.p2align	4, 0x90
-__Z24matrixTransformG2_unpackPiS_ii:    ## @_Z24matrixTransformG2_unpackPiS_ii
-## %bb.0:
+
+__Z24matrixTransformG2_unpackPiS_ii: 
 	push	rbp
 	mov	rbp, rsp
 	push	r15
@@ -12,14 +11,9 @@ __Z24matrixTransformG2_unpackPiS_ii:    ## @_Z24matrixTransformG2_unpackPiS_ii
 	push	r13
 	push	r12
 	push	rbx
-	mov	qword ptr [rbp - 56], rsi ## 8-byte Spill
-	mov	qword ptr [rbp - 48], rdi ## 8-byte Spill
-	test	ecx, ecx
-	jle	LBB0_9
-## %bb.1:
-	cmp	edx, 2
-	jl	LBB0_9
-## %bb.2:
+	mov	qword ptr [rbp - 56], rsi 	# 8-byte Spill
+	mov	qword ptr [rbp - 48], rdi 	# 8-byte Spill
+
 	mov	eax, edx
 	shr	eax, 31
 	add	eax, edx
@@ -33,21 +27,23 @@ __Z24matrixTransformG2_unpackPiS_ii:    ## @_Z24matrixTransformG2_unpackPiS_ii
 	mov	r15d, r8d
 	and	r15d, 1
 	sub	r8, r15
-	mov	qword ptr [rbp - 72], rax ## 8-byte Spill
-	mov	rdx, qword ptr [rbp - 48] ## 8-byte Reload
+	mov	qword ptr [rbp - 72], rax 	# 8-byte Spill
+	mov	rdx, qword ptr [rbp - 48] 	# 8-byte Reload
 	lea	rcx, [rdx + 4*rax + 64]
-	mov	qword ptr [rbp - 64], rsi ## 8-byte Spill
+	mov	qword ptr [rbp - 64], rsi 	# 8-byte Spill
 	lea	r12, [4*rsi]
 	add	rdx, 64
-	mov	rax, qword ptr [rbp - 56] ## 8-byte Reload
+	mov	rax, qword ptr [rbp - 56] 	# 8-byte Reload
 	add	rax, 192
 	xor	r13d, r13d
-	mov	rdi, qword ptr [rbp - 72] ## 8-byte Reload
+	mov	rdi, qword ptr [rbp - 72] 	# 8-byte Reload
 	xor	ebx, ebx
 	test	r14, r14
 	jne	LBB0_4
 	jmp	LBB0_6
 	.p2align	4, 0x90
+
+# начало цикла 
 LBB0_8:                                 ##   in Loop: Header=BB0_6 Depth=1
 	inc	r13
 	add	rcx, r12
@@ -55,13 +51,15 @@ LBB0_8:                                 ##   in Loop: Header=BB0_6 Depth=1
 	add	rax, r12
 	cmp	r13, r11
 	je	LBB0_9
-## %bb.3:                               ##   in Loop: Header=BB0_6 Depth=1
+# %bb.3:                               ##   in Loop: Header=BB0_6 Depth=1
 	xor	ebx, ebx
 	test	r14, r14
 	je	LBB0_6
 LBB0_4:
 	mov	r10, r8
 	.p2align	4, 0x90
+
+# начало цикла 
 LBB0_5:                                 ## =>This Inner Loop Header: Depth=1
 	movaps	xmm0, xmmword ptr [rdx + 4*rbx - 64]
 	movaps	xmm1, xmmword ptr [rcx + 4*rbx - 64]
@@ -99,6 +97,7 @@ LBB0_6:                                 ## =>This Inner Loop Header: Depth=1
 	movaps	xmmword ptr [rsi + 8*rbx], xmm2
 	movaps	xmmword ptr [rsi + 8*rbx + 64], xmm0
 	jmp	LBB0_8
+
 LBB0_9:
 	pop	rbx
 	pop	r12
@@ -107,6 +106,3 @@ LBB0_9:
 	pop	r15
 	pop	rbp
 	ret
-                                        ## -- End function
-
-# .subsections_via_symbols
