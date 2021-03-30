@@ -1,0 +1,83 @@
+Running ./mybenchmark
+Run on (4 X 1800 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x2)
+  L1 Instruction 32 KiB (x2)
+  L2 Unified 256 KiB (x2)
+  L3 Unified 3072 KiB (x1)
+Load Average: 3.17, 2.32, 1.86
+---------------------------------------------------------------------------
+Benchmark                                 Time             CPU   Iterations
+---------------------------------------------------------------------------
+BM_matrixTransformG2_withoutSIMD      31618 ns        31606 ns        21783
+BM_matrixTransformG3_withoutSIMD      29876 ns        29855 ns        23483
+BM_matrixTransformG5_withoutSIMD      28846 ns        28842 ns        23691
+BM_matrixTransformG2_SIMD              1745 ns         1745 ns       398960
+BM_matrixTransformG3_SIMD              3606 ns         3606 ns       188088
+BM_matrixTransformG5_SIMD              5162 ns         5161 ns       130651
+
+
+rm -f ./bench_ticks
+g++ bench_ticks.cpp matrixTransformG2_SIMD.asm matrixTransformG3_SIMD.asm matrixTransformG5_SIMD.asm -o ./bench_ticks
+./bench_ticks
+NAME	ITEMS	TICKS	TICKS_PER_ITEMS
+matrixTransformG2_SIMD	480	119	0.247917
+matrixTransformG3_SIMD	480	325	0.677083
+matrixTransformG5_SIMD	480	462	0.962500
+matrixTransformG2_SIMD	4080	989	0.242402
+matrixTransformG3_SIMD	4080	2766	0.677941
+matrixTransformG5_SIMD	4080	3980	0.975490
+matrixTransformG2_SIMD	7680	2476	0.322396
+matrixTransformG3_SIMD	7680	5203	0.677474
+matrixTransformG5_SIMD	7680	7553	0.983464
+matrixTransformG2_SIMD	11280	3600	0.319149
+matrixTransformG3_SIMD	11280	7627	0.676152
+matrixTransformG5_SIMD	11280	10907	0.966933
+matrixTransformG2_SIMD	14880	4750	0.319220
+matrixTransformG3_SIMD	14880	10159	0.682728
+matrixTransformG5_SIMD	14880	14398	0.967608
+matrixTransformG2_SIMD	18480	5912	0.319913
+matrixTransformG3_SIMD	18480	12475	0.675054
+matrixTransformG5_SIMD	18480	17844	0.965584
+matrixTransformG2_SIMD	22080	7084	0.320833
+matrixTransformG3_SIMD	22080	14905	0.675045
+matrixTransformG5_SIMD	22080	21315	0.965353
+matrixTransformG2_SIMD	25680	8235	0.320678
+matrixTransformG3_SIMD	25680	17317	0.674338
+matrixTransformG5_SIMD	25680	24785	0.965148
+matrixTransformG2_SIMD	29280	9405	0.321209
+matrixTransformG3_SIMD	29280	19944	0.681148
+matrixTransformG5_SIMD	29280	28349	0.968204
+matrixTransformG2_SIMD	32880	10787	0.328072
+matrixTransformG3_SIMD	32880	22216	0.675669
+matrixTransformG5_SIMD	32880	31736	0.965207
+matrixTransformG2_SIMD	36480	16577	0.454413
+matrixTransformG3_SIMD	36480	25507	0.699205
+matrixTransformG5_SIMD	36480	35347	0.968942
+matrixTransformG2_SIMD	40080	20830	0.519711
+matrixTransformG3_SIMD	40080	28415	0.708957
+matrixTransformG5_SIMD	40080	38918	0.971008
+matrixTransformG2_SIMD	43680	23588	0.540018
+matrixTransformG3_SIMD	43680	30952	0.708608
+matrixTransformG5_SIMD	43680	42439	0.971589
+matrixTransformG2_SIMD	47280	25999	0.549894
+matrixTransformG3_SIMD	47280	33508	0.708714
+matrixTransformG5_SIMD	47280	45895	0.970706
+matrixTransformG2_SIMD	50880	27894	0.548231
+matrixTransformG3_SIMD	50880	35955	0.706663
+matrixTransformG5_SIMD	50880	49539	0.973644
+matrixTransformG2_SIMD	54480	29926	0.549302
+matrixTransformG3_SIMD	54480	38592	0.708370
+matrixTransformG5_SIMD	54480	53145	0.975496
+matrixTransformG2_SIMD	58080	31975	0.550534
+matrixTransformG3_SIMD	58080	41041	0.706629
+matrixTransformG5_SIMD	58080	56295	0.969267
+matrixTransformG2_SIMD	61680	33839	0.548622
+matrixTransformG3_SIMD	61680	43704	0.708560
+matrixTransformG5_SIMD	61680	59786	0.969293
+matrixTransformG2_SIMD	65280	35814	0.548621
+matrixTransformG3_SIMD	65280	46098	0.706158
+matrixTransformG5_SIMD	65280	63569	0.973790
+matrixTransformG2_SIMD	68880	37820	0.549071
+matrixTransformG3_SIMD	68880	49233	0.714765
+matrixTransformG5_SIMD	68880	66869	0.970804

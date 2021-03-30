@@ -1,5 +1,7 @@
 # assembly_SIMD_training
 
+resultsFinal.txt chart1.png chart2.png
+
 Consider a matrix A having L rows and Q columns. In memory, the matrix is stored by columns in the form of a one-dimensional array. I.e., to access the element in row l and column q, you need to access the array element A[l + L*q].
 
 The following transformation is performed on each column of the matrix:
